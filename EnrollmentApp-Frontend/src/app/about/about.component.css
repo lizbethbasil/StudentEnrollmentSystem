@@ -1,0 +1,11 @@
+#about{
+    background-image: url('https://drive.google.com/file/d/1hUuwuwNAqr9dm0CNIHRVIvb6i9hgXs2Z/view?usp=sharing');
+    background-size: cover;
+    opacity: 0.9;
+}
+
+@media only screen and (min-width: 996px){
+    #about img{
+        margin-top: -2rem; 
+        margin-bottom: -8rem;    
+}}

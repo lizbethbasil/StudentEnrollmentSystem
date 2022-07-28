@@ -1,0 +1,7 @@
+#img-holder{
+    background-image: url('../../assets/img/courses-banner.jpg'); 
+    background-size: cover;
+    height: 24rem;
+}
+.card{border: 1px solid #eeeeee;}
+.card:hover{background-color: #eeeeee;}
