@@ -4,7 +4,8 @@
     <div class="col wrapper" *ngFor="let course of courses">
       <img src="{{course.img}}" class="img-thumbnail" alt="{{course.alt}}">
       <div class="center">
-        <a routerLink="/course/{{course.id}}" class="btn btn-sm btn-primary mt-2">Know more</a>
+        <!-- <a routerLink="/course/{{course.id}}" class="btn btn-sm btn-primary mt-2">Know more</a> -->
+        <a routerLink="/course" class="btn btn-sm btn-primary mt-2">Know more</a>
       </div>
       <div class="text-center text-secondary py-2">
         <small class="fw-bold">{{course.title}}</small>

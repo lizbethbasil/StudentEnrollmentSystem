@@ -11,6 +11,10 @@ import { ServicesComponent } from './services/services.component';
 import { AboutComponent } from './about/about.component';
 import { OfferingsComponent } from './offerings/offerings.component';
 import { CourseComponent } from './course/course.component';
+import { UserloginComponent } from './userlogin/userlogin.component';
+import { StudentformComponent } from './studentform/studentform.component';
+import { EmployerformComponent } from './employerform/employerform.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,11 +26,15 @@ import { CourseComponent } from './course/course.component';
     ServicesComponent,
     AboutComponent,
     OfferingsComponent,
-    CourseComponent
+    CourseComponent,
+    UserloginComponent,
+    StudentformComponent,
+    EmployerformComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
