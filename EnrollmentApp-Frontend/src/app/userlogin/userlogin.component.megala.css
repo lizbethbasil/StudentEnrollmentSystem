@@ -1,15 +1,12 @@
-.form-wrapper {
+body {
     margin: 0;
     padding: 0;
-    background: url('../../assets/img/userlogin-bg.jpg');
+    background: url(../../assets/img/loginbg.jpg);
     /* background-color: #a6808c; */
     background-size: cover;
-    background-position: bottom;
-    /* font-family: sans-serif; */
+    font-family: sans-serif;
     /* margin-bottom: 20px; */
-    /* height:500px; */
-    height: 36rem;
-    padding: 24px 0;
+    height:500px;
   }
   
   .box {
