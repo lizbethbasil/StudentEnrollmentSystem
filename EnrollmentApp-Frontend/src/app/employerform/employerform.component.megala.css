@@ -1,20 +1,19 @@
-/* @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap"); */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap");
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-family: "Montserrat", sans-serif; */
+  font-family: "Montserrat", sans-serif;
 }
-/* body {
+body {
   background: #1f5673;
   padding: 0 10px;
-} */
+}
 .reg {
   padding: 30px;
-  background: url('../../assets/img/employerform-bg.jpg');
+  background: url(../../assets/img/loginbg.jpg);
   background-repeat: no-repeat;
-  background-position: bottom;
   /* background-color: #a6808c; */
   background-size: cover;
   font-family: sans-serif;
@@ -27,7 +26,7 @@
   background: rgb(248, 250, 250);
   margin: 10px auto;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.125);
-  padding: 30px;
+  padding: 30px 30px;
 }
 
 .wrapper .title {
@@ -35,7 +34,7 @@
   font-weight: 700;
   margin-bottom: 25px;
   color: #1f5673;
-  /* text-transform: uppercase; */
+  text-transform: uppercase;
   text-align: center;
 }
 

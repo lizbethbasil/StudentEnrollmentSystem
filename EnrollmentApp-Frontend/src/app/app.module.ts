@@ -14,7 +14,7 @@ import { CourseComponent } from './course/course.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { StudentformComponent } from './studentform/studentform.component';
 import { EmployerformComponent } from './employerform/employerform.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
