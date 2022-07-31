@@ -1,43 +1,33 @@
-<div class="reg mt-5">
-    <div class="wrapper">
-        <div class="title">
-             Registration Form
-        </div>
-        <form  #employeeReg='ngForm' (submit)="employeeRegister()" [formGroup]="loginForm">
-        <div class="form">
-           <div class="inputfield">
-              <label>Name</label>
-              <input  type="text" formControlName='name' class="input" name="name" required  title="Please Enter Name">
-           </div>  
-            <div class="inputfield">
-              <label>Email</label>
-              <input type="email" formControlName='email' class="input" name="email" title="Please Enter Valid Email">
-           </div>
-           <!-- <div class="inputfield">
-             <label></label>
-             <span style="color: red; margin-top: -2%;" *ngIf='email && email.invalid && email.touched '>Email is not valid</span>
-            </div>  
-     -->
-           <div class="inputfield">
-             <label>Password</label>
-             <input type="password" formControlName='password' class="input" name="password"
-             title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
-          </div> 
-          <!-- <div class="inputfield">
-             <label></label>
-             <span style="color: red; margin-top: -2%;" *ngIf='password && password.invalid && password.touched ' class="alert alert-danger">Password should have one Uppercase, one Lowecase and one number and atleast 8 characters </span>
-            </div> -->
-    
-          <div class="inputfield">
-              <label>Role</label>
-              <input type="text" formControlName='role' class="input" name="role" required title="Please Enter Role">
-              
-           </div>
-           
-          <div class="inputfield">
-             <button type="submit" class="btn btn-primary" [disabled]='employeeReg.form.invalid'>Register</button>
-          </div>
-        </div>
+<section class="container-fluid">
+   <div class="container mt-5 py-5">
+     <div class="row justify-content-center">
+       <form id="employerForm" class="col-lg-4 px-5 border rounded"
+         #employerReg='ngForm' (submit)="employerRegister()" [formGroup]="signupForm">
+         <img src="../../assets/img/employerform-banner.jpg" class="img-fluid img-animate pt-2" alt="">
+         <p class="h3 text-center fw-bold pb-4">Register Here</p>
+         <div class="mb-3">
+             <input type="text" class="form-control" id="name" placeholder="Name" 
+                 formControlName="name" name="name" required />
+         </div>
+         <div class="mb-3">
+           <input type="email" class="form-control" id="email" placeholder="Email" 
+             formControlName="email" name="email" />
+         </div>
+         <div class="mb-3">
+           <input type="password" class="form-control" id="password" placeholder="Password" 
+             formControlName="password" name="password" />
+             <div class="ps-2 text-secondary" style="font-size: 14px;">
+               <small>Password should have a minimum length of 8 characters, an uppercase, lowercase and a number</small>
+             </div>
+         </div>
+         <div class="mb-4">
+           <input type="text" class="form-control" id="role" placeholder="Role" 
+             formControlName="role" name="role" required />
+         </div>
+         <div class="mb-4">
+           <button class="btn btn-sm btn-primary px-3" [disabled]='employerReg.form.invalid'>REGISTER</button>
+         </div>
        </form>
-    </div>
-    </div>
+     </div>
+   </div>        
+ </section>

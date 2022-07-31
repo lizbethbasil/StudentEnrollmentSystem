@@ -7,14 +7,14 @@ import { FormGroup,FormControl,Validators} from '@angular/forms'
   styleUrls: ['./employerform.component.css']
 })
 export class EmployerformComponent implements OnInit {
-  loginForm = new FormGroup({
+  signupForm = new FormGroup({
     name: new FormControl(''),
     email: new FormControl('',[Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')]),
     password: new FormControl('',[Validators.required,Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$')]),
     role: new FormControl('')
   })
 
-  employeeRegister(){ }
+  employerRegister(){ }
   
   constructor() { }
 

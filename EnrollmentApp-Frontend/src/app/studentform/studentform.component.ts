@@ -13,11 +13,11 @@ export class StudentformComponent implements OnInit {
     password: new FormControl('', Validators.compose([Validators.required, Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$')])),
     phone: new FormControl('', Validators.compose([Validators.required, Validators.pattern('^(\\+?\d{1,4}[\s-])?(?!0+\s+,?$)\\d{10}\s*,?$')])),
     address: new FormControl(''),
-    district: new FormControl(''),
-    state: new FormControl(''),
     qualification: new FormControl(''),
     passout: new FormControl(''),
+    skillset: new FormControl(''),
     employmentStatus: new FormControl(''),
+    technology: new FormControl(''),
     course: new FormControl(''),
     image:  new FormControl('')
   })
