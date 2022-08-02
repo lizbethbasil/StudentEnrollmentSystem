@@ -1,7 +1,7 @@
 <section class="container-fluid">
   <div class="container mt-5 py-5">
     <div class="row justify-content-center">
-      <form id="employerForm" class="col-lg-4 border rounded p-0"
+      <form id="loginForm" class="col-lg-4 border rounded p-0"
         #userlogin='ngForm' (submit)="login()">
         <img src="../../assets/img/userlogin-banner.png" class="img-fluid img-animate pt-2" alt="">
         
@@ -14,9 +14,9 @@
         <div class="mb-3">
           <input type="password" class="form-control" id="password" placeholder="Password" 
             onkeyup="this.setAttribute('value', this.value);" [(ngModel)]="user.password" value="" name="password" required />
-            <div class="ps-2 text-light" style="font-size: 14px;">
+            <!-- <div class="ps-2 text-light" style="font-size: 14px;">
               <small>Password should have a minimum length of 8 characters, an uppercase, lowercase and a number</small>
-            </div>
+            </div> -->
         </div>
         <div class="mb-4">
           <select class="form-select text-secondary" 

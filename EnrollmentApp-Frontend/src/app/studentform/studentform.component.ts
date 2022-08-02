@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormControl,Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-studentform',
@@ -11,15 +11,7 @@ export class StudentformComponent implements OnInit {
     name: new FormControl(''),
     email: new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')])),
     password: new FormControl('', Validators.compose([Validators.required, Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$')])),
-    phone: new FormControl('', Validators.compose([Validators.required, Validators.pattern('^(\\+?\d{1,4}[\s-])?(?!0+\s+,?$)\\d{10}\s*,?$')])),
-    address: new FormControl(''),
-    qualification: new FormControl(''),
-    passout: new FormControl(''),
-    skillset: new FormControl(''),
-    employmentStatus: new FormControl(''),
-    technology: new FormControl(''),
-    course: new FormControl(''),
-    image:  new FormControl('')
+    confirmpassword: new FormControl('', Validators.compose([Validators.required]))
   })
 
   onSubmit(value:any){

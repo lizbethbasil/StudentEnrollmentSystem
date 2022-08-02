@@ -15,6 +15,7 @@ import { UserloginComponent } from './userlogin/userlogin.component';
 import { StudentformComponent } from './studentform/studentform.component';
 import { EmployerformComponent } from './employerform/employerform.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EnrollmentformComponent } from './enrollmentform/enrollmentform.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CourseComponent,
     UserloginComponent,
     StudentformComponent,
-    EmployerformComponent
+    EmployerformComponent,
+    EnrollmentformComponent
   ],
   imports: [
     BrowserModule,

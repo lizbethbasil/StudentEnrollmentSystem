@@ -5,7 +5,6 @@
         [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm.value)">
         <img src="../../assets/img/studentform-banner.png" class="img-fluid img-animate pt-2" alt="">
         
-        <!-- <div class="px-5 pb-5 bg-primary bg-gradient bg-opacity-75"> -->
           <p class="h3 text-center fw-bold py-4">Register Here</p>
           <div class="mb-3">
               <input type="text" class="form-control" id="name" placeholder="Name" 
@@ -14,82 +13,29 @@
           <div class="mb-3">
             <input type="email" class="form-control" id="email" placeholder="Email" 
               formControlName="email" name="email" />
+            <div class="ps-2 text-secondary" style="font-size: 14px;" *ngIf="signupForm.controls['email'].hasError('pattern')">
+              <small>Enter a valid email</small>
+            </div>
           </div>
           <div class="mb-3">
             <input type="password" class="form-control" id="password" placeholder="Password" 
               formControlName="password" name="password" />
-              <div class="ps-2 text-secondary" style="font-size: 14px;">
+              <div id="error" *ngIf="signupForm.controls['password'].hasError('pattern')" 
+                class="ps-2 text-secondary" style="font-size: 14px;">
                 <small>Password should have a minimum length of 8 characters, an uppercase, lowercase and a number</small>
               </div>
           </div>
-          <div class="mb-3">
-            <input type="tel" class="form-control" id="phone" placeholder="Phone" 
-              formControlName="phone" name="phone" />
-          </div>            
-          <div class="mb-3">
-            <input type="text" class="form-control" id="address" placeholder="Address" 
-              formControlName="address" name="address" required />
-          </div>
-          <div class="mb-3">
-              <select class="form-select text-secondary" 
-                  formControlName="qualification" name="qualification" required>
-                  <option selected disabled value="">Select Highest Qualification</option>
-                  <option value="BE/ BTech">BE/ BTech</option>
-                  <option value="BSc/ BCA">BSc/ BCA</option>
-                  <option value="Diploma-CS">Diploma-CS</option>
-                  <option value="ME/ MTech">ME/ MTech</option>
-                  <option value="MSc/ MCA">MSc/ MCA</option>
-              </select>
-          </div>
-          <div class="mb-3">
-            <input type="number" min="1950" max="2023" class="form-control" id="passout" placeholder="Passout Year" 
-              formControlName="passout" name="passout" required />
-          </div>
-          <div class="mb-3">
-            <input type="text" class="form-control" id="skillset" placeholder="Skill Set" 
-              formControlName="skillset" name="skillset" />
-          </div>
-          <div class="mb-3">
-              <select class="form-select text-secondary" 
-                  formControlName="employmentStatus" name="employmentStatus" required>
-                  <option selected disabled value="">Select Employment Status</option>
-                  <option value="Student">Student</option>
-                  <option value="Employed">Employed</option>
-                  <option value="Unemployed">Unemployed</option>
-              </select>
-          </div>
-          <div class="mb-3">
-            <input type="text" class="form-control" id="technology" placeholder="Technology Training" 
-              formControlName="technology" name="technology" />
-          </div>
-          <div class="mb-3">
-              <select class="form-select text-secondary"
-                  formControlName="course" name="course" required>
-                  <option selected disabled value="">Select Course</option>
-                  <option value="Data Science & Machine Learning">Data Science & Machine Learning</option>
-                  <option value="Full Stack Development - MEAN">Full Stack Development - MEAN</option>
-                  <option value="Software Testing">Software Testing</option>
-                  <option value="Data Science & Analytics">Data Science & Analytics</option>
-                  <option value="Robotic Process Automation">Robotic Process Automation</option>
-                  <option value="Cyber Security Analyst">Cyber Security Analyst</option>
-                  <option value="Digital Marketing">Digital Marketing</option>
-                  <option value="Full Stack Development - MERN">Full Stack Development - MERN</option>
-              </select>
-          </div>
-          <div class="mb-3">
-            <input type="text" class="form-control" id="fee" placeholder="Course Fee" required />
-          </div>            
-          <div class="mb-3">
-            <input type="file" class="form-control" id="image" placeholder="Upload Photo" 
-              formControlName='image' name="image" required/>
-          </div>
           <div class="mb-4">
-            <input type="number" class="form-control" id="studentid" placeholder="Student ID" required />
-          </div>            
+            <input type="confirmpassword" class="form-control" id="confirmpassword" placeholder="Confirm Password" 
+              formControlName="confirmpassword" name="confirmpassword" />
+              <div id="error" *ngIf="" 
+                class="ps-2 text-secondary" style="font-size: 14px;">
+                <small>Passwords do not match</small>
+              </div>
+          </div>
           <div class="mb-4">
             <button class="btn btn-sm btn-primary px-3" [disabled]='signupForm.invalid'>REGISTER</button>
           </div>
-        <!-- </div> -->
       </form>
     </div>
   </div>        
