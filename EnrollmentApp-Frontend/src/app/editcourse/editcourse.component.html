@@ -1,0 +1,65 @@
+<!-- <section id="addcourse" class="container-fluid">
+    <div id="img-holder" class="row"></div>
+    <div id="title" class="container p-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 px-5 border rounded">
+                <p class="h3 fw-bold text-center py-4">{{title}}</p>
+                <form (ngSubmit)="AddCourse()">   
+                    <div class="card-body">
+                        <form method="POST" #editForm='ngForm' (ngSubmit)="editCourse()" enctype="multipart/form-data">
+
+                        </form>
+                        <div class="table-responsive">
+                            <table class="table">                            
+                                <tr>
+                                    <td>Course Code</td>
+                                    <td><input type="string" class="form-control" name="ccode" [(ngModel)]="c.code" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Course Name</td>
+                                    <td><input type="text" class="form-control" name="cname" [(ngModel)]="c.name" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Technology</td>
+                                    <td><input type="text" class="form-control" name="technology" [(ngModel)]="c.technology" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Introduction</td>
+                                    <td><input type="text" class="form-control" name="introduction" [(ngModel)]="c.intro" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Overview</td>
+                                    <td><input type="text" class="form-control" name="overview" [(ngModel)]="c.overview" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Info</td>
+                                    <td><input type="text" class="form-control" name="info" [(ngModel)]="c.info" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Eligibility</td>
+                                    <td><input type="text" class="form-control" name="eligibility" [(ngModel)]="c.eligibility" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Fee</td>
+                                    <td><input type="number" class="form-control" name="fee" [(ngModel)]="c.fee" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Count</td>
+                                    <td><input type="number" class="form-control" name="count" [(ngModel)]="c.count" required></td>
+                                </tr>
+                                <tr>
+                                    <td>Image</td>
+                                    <td><input type="file" class="form-control" name="image" [(ngModel)]="c.image" (change)="selectImage($event)" required></td>
+                                </tr>
+                                <tr>
+                                    <input class="btn btn-sm btn-primary my-2" type="submit" value="Submit" [disabled]='addForm.form.invalid'>
+                                    <input class="btn btn-sm btn-secondary my-2" type="reset" value="Reset">
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>        
+</section> -->
