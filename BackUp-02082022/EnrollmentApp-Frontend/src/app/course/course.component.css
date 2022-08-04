@@ -1,0 +1,8 @@
+.banner{
+    background-image: url('../../assets/img/course-banner.jpg');
+    background-size: cover;
+}
+.bg-gray{background-color: #f2f4f9;}
+.btn-white{background-color: #ffffff;}
+a.btn-white:hover{font-weight: bold;}
+#eligibilityCollapse ul li{list-style-type: square;}
