@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { StudentModel } from '../admin/students/student.model';
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-enrollmentform',
@@ -21,14 +24,21 @@ export class EnrollmentformComponent implements OnInit {
     course: new FormControl(''),
     image:  new FormControl('')
   })
+  
+  // onSubmit(value:any){
+  //   console.log(value);
+  // }
 
-  onSubmit(value:any){
-    console.log(value);
-  }
+  addstudent = new StudentModel("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
-  constructor() { }
+  constructor(public studentService: StudentService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  AddStudent() {
+    this.studentService.addStudent(this.addstudent);
+    alert("New Student Added");
+    this.router.navigate(['/students']);
+  }
 }

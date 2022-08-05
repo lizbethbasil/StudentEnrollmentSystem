@@ -9,7 +9,8 @@ import { StudentformComponent } from './studentform/studentform.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { AddcourseComponent } from './admin/addcourse/addcourse.component';
 import { StudentsComponent } from './admin/students/students.component';
-import { EditcourseComponent } from './editcourse/editcourse.component';
+import { EditcourseComponent } from './admin/editcourse/editcourse.component';
+import { EmployersComponent } from './admin/employers/employers.component';
 
 const routes: Routes = [
   {path:"", component: HomeComponent},
@@ -18,10 +19,12 @@ const routes: Routes = [
   {path:"addcourse", component: AddcourseComponent},
   {path:"editcourse", component: EditcourseComponent},
 
-  {path:"students", component: StudentsComponent},
+  // {path:"course", component: CourseComponent},
+  {path:"course/:id", component: CourseComponent},
 
-  // {path:"course/:id", component: CourseComponent},
-  {path:"course", component: CourseComponent},
+  {path:"employers", component: EmployersComponent},
+
+  {path:"students", component: StudentsComponent},
 
   {path:"employerregistration", component: EmployerformComponent},
   {path:"studentregistration", component: StudentformComponent},

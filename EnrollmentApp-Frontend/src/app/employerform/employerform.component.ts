@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormControl,Validators} from '@angular/forms'
+import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { EmployerModel } from '../admin/employers/employer.model';
+import { EmployerService } from '../employer.service';
 
 @Component({
   selector: 'app-employerform',
   templateUrl: './employerform.component.html',
   styleUrls: ['./employerform.component.css']
 })
+
 export class EmployerformComponent implements OnInit {
   signupForm = new FormGroup({
     name: new FormControl(''),
@@ -15,11 +19,16 @@ export class EmployerformComponent implements OnInit {
     role: new FormControl('')
   })
 
-  employerRegister(){ }
-  
-  constructor() { }
+  addemployer = new EmployerModel("", "", "", "");
+
+  constructor(public employerService: EmployerService, public router: Router) { }
 
   ngOnInit(): void {
   }
 
+  AddEmployer() {
+    this.employerService.addEmployer(this.addemployer);
+    alert("New Employer Added");
+    this.router.navigate(['/employers']);
+  }
 }

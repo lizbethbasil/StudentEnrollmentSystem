@@ -1,93 +1,96 @@
 <section class="container-fluid">
   <div class="container mt-5 py-5">
     <div class="row justify-content-center">
+      <!-- <form id="studentEnroll" class="col-lg-4 px-5 border rounded"
+        [formGroup]="enrollmentForm" (ngSubmit)="onSubmit(enrollmentForm.value)"> -->
       <form id="studentEnroll" class="col-lg-4 px-5 border rounded"
-        [formGroup]="enrollmentForm" (ngSubmit)="onSubmit(enrollmentForm.value)">
+        [formGroup]="enrollmentForm" (ngSubmit)="AddStudent()">
         <img src="../../assets/img/enrollmentform-banner.jpg" class="img-fluid img-animate pt-2" alt="">
         
-          <p class="h3 text-center fw-bold py-4">Register Here</p>
-          <div class="mb-3">
-              <input type="text" class="form-control" id="name" placeholder="Name" 
-                  formControlName="name" name="name" required />
+        <p class="h3 text-center fw-bold py-4">Register Here</p>
+        <div class="mb-3">
+          <input type="text" class="form-control" id="name" placeholder="Name" 
+            formControlName="name" name="name" [(ngModel)]="addstudent.name" required />
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" id="email" placeholder="Email" 
+            formControlName="email" name="email" [(ngModel)]="addstudent.email" />
+          <div class="ps-2 text-secondary" style="font-size: 14px;" *ngIf="enrollmentForm.controls['email'].hasError('pattern')">
+            <small>Enter a valid email</small>
           </div>
-          <div class="mb-3">
-            <input type="email" class="form-control" id="email" placeholder="Email" 
-              formControlName="email" name="email" />
-              <div class="ps-2 text-secondary" style="font-size: 14px;" *ngIf="enrollmentForm.controls['email'].hasError('pattern')">
-                <small>Enter a valid email</small>
-              </div>
-          </div>
-          <div class="mb-3">
-            <input type="tel" class="form-control" id="phone" placeholder="Phone" 
-              formControlName="phone" name="phone" />
-            <div class="ps-2 text-secondary" style="font-size: 14px;" *ngIf="enrollmentForm.controls['phone'].hasError('pattern')">
-              <small>Enter a valid phone</small>
-            </div>  
-          </div>            
-          <div class="mb-3">
-            <input type="text" class="form-control" id="address" placeholder="Address" 
-              formControlName="address" name="address" required />
-          </div>
-          <div class="mb-3">
-              <select class="form-select text-secondary" 
-                  formControlName="qualification" name="qualification" required>
-                  <option selected disabled value="">Select Highest Qualification</option>
-                  <option value="BE/ BTech">BE/ BTech</option>
-                  <option value="BSc/ BCA">BSc/ BCA</option>
-                  <option value="Diploma-CS">Diploma-CS</option>
-                  <option value="ME/ MTech">ME/ MTech</option>
-                  <option value="MSc/ MCA">MSc/ MCA</option>
-              </select>
-          </div>
-          <div class="mb-3">
+        </div>
+        <div class="mb-3">
+          <input type="tel" class="form-control" id="phone" placeholder="Phone" 
+            formControlName="phone" name="phone" [(ngModel)]="addstudent.phone" />
+          <div class="ps-2 text-secondary" style="font-size: 14px;" *ngIf="enrollmentForm.controls['phone'].hasError('pattern')">
+            <small>Enter a valid phone</small>
+          </div>  
+        </div>            
+        <div class="mb-3">
+          <input type="text" class="form-control" id="address" placeholder="Address" 
+            formControlName="address" name="address" [(ngModel)]="addstudent.address" required />
+        </div>
+        <div class="mb-3">
+          <select class="form-select text-secondary" 
+            formControlName="qualification" name="qualification" [(ngModel)]="addstudent.qualification" required>
+            <option selected disabled value="">Select Highest Qualification</option>
+            <option value="BE/ BTech">BE/ BTech</option>
+            <option value="BSc/ BCA">BSc/ BCA</option>
+            <option value="Diploma-CS">Diploma-CS</option>
+            <option value="ME/ MTech">ME/ MTech</option>
+            <option value="MSc/ MCA">MSc/ MCA</option>
+          </select>
+        </div>
+        <div class="mb-3">
             <input type="number" min="1950" max="2023" class="form-control" id="passout" placeholder="Passout Year" 
-              formControlName="passout" name="passout" required />
+              formControlName="passout" name="passout" [(ngModel)]="addstudent.passout" required />
           </div>
           <div class="mb-3">
             <input type="text" class="form-control" id="skillset" placeholder="Skill Set" 
-              formControlName="skillset" name="skillset" />
+              formControlName="skillset" name="skillset" [(ngModel)]="addstudent.skillset" />
           </div>
           <div class="mb-3">
-              <select class="form-select text-secondary" 
-                  formControlName="employmentStatus" name="employmentStatus" required>
-                  <option selected disabled value="">Select Employment Status</option>
-                  <option value="Student">Student</option>
-                  <option value="Employed">Employed</option>
-                  <option value="Unemployed">Unemployed</option>
-              </select>
-          </div>
-          <div class="mb-3">
-            <input type="text" class="form-control" id="technology" placeholder="Technology Training" 
-              formControlName="technology" name="technology" />
-          </div>
-          <div class="mb-3">
-            <input type="number" class="form-control" id="year" placeholder="Year" 
-              formControlName="year" name="year" />
-          </div>
-          <div class="mb-3">
-              <select class="form-select text-secondary"
-                  formControlName="course" name="course" required>
-                  <option selected disabled value="">Select Course</option>
-                  <option value="Data Science & Machine Learning">Data Science & Machine Learning</option>
-                  <option value="Full Stack Development - MEAN">Full Stack Development - MEAN</option>
-                  <option value="Software Testing">Software Testing</option>
-                  <option value="Data Science & Analytics">Data Science & Analytics</option>
-                  <option value="Robotic Process Automation">Robotic Process Automation</option>
-                  <option value="Cyber Security Analyst">Cyber Security Analyst</option>
-                  <option value="Digital Marketing">Digital Marketing</option>
-                  <option value="Full Stack Development - MERN">Full Stack Development - MERN</option>
-              </select>
-          </div>
-          <div class="mb-3">
-            <input type="text" class="form-control" id="fee" placeholder="Course Fee" required />
-          </div>            
-          <div class="mb-4">
-            <input type="file" class="form-control" id="image" placeholder="Upload Photo" 
-              formControlName='image' name="image" required/>
-          </div>
-          <div class="mb-4">
-            <button class="btn btn-sm btn-primary px-3" [disabled]='enrollmentForm.invalid'>REGISTER</button>
-          </div>
+            <select class="form-select text-secondary" 
+                formControlName="employmentStatus" name="employmentStatus" [(ngModel)]="addstudent.employmentStatus" required>
+                <option selected disabled value="">Select Employment Status</option>
+                <option value="Student">Student</option>
+                <option value="Employed">Employed</option>
+                <option value="Unemployed">Unemployed</option>
+            </select>
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" id="technology" placeholder="Technology Training" 
+            formControlName="technology" name="technology" [(ngModel)]="addstudent.technologyTraining" />
+        </div>
+        <div class="mb-3">
+          <input type="number" class="form-control" id="year" placeholder="Year" 
+            formControlName="year" name="year" [(ngModel)]="addstudent.year" />
+        </div>
+        <div class="mb-3">
+          <select class="form-select text-secondary"
+            formControlName="course" name="course" [(ngModel)]="addstudent.course" required>
+            <option selected disabled value="">Select Course</option>
+            <option value="Data Science & Machine Learning">Data Science & Machine Learning</option>
+            <option value="Full Stack Development - MEAN">Full Stack Development - MEAN</option>
+            <option value="Software Testing">Software Testing</option>
+            <option value="Data Science & Analytics">Data Science & Analytics</option>
+            <option value="Robotic Process Automation">Robotic Process Automation</option>
+            <option value="Cyber Security Analyst">Cyber Security Analyst</option>
+            <option value="Digital Marketing">Digital Marketing</option>
+            <option value="Full Stack Development - MERN">Full Stack Development - MERN</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <input type="text" class="form-control" id="fee" placeholder="Course Fee" [(ngModel)]="addstudent.fee" required />
+        </div>            
+        <div class="mb-4">
+          <input type="file" class="form-control" id="image" placeholder="Upload Photo" 
+            formControlName='image' name="image" [(ngModel)]="addstudent.exitmark" required/>
+        </div>
+        <div class="mb-4">
+          <!-- <button class="btn btn-sm btn-primary px-3" [disabled]='enrollmentForm.invalid'>REGISTER</button> -->
+          <input class="btn btn-sm btn-primary px-3" type="submit" value="Register" [disabled]='enrollmentForm.invalid'>
+        </div>
       </form>
     </div>
   </div>        

@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class CourseService {
 
   constructor(public http: HttpClient) { }
+  
   addCourse(item: any) {
     return this.http.post('http://localhost:5000/addcourse', { item })
       .subscribe(data => { 
@@ -28,7 +29,7 @@ export class CourseService {
   }
 
   editCourse(course: any){
-    return this.http.put('http://localhost:5000/editcourse', {"course": course})
+    return this.http.put('http://localhost:5000/editcourse', { "course": course })
   }
 
 }

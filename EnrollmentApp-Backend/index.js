@@ -106,6 +106,23 @@ app.get('/employers',function(req,res){
         });
 });  
 
+// add employer
+app.post('/addemployer', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+    console.log(req.body);
+    var employer = {
+        name: req.body.item.name,
+        email: req.body.item.technology,
+        password: req.body.item.intro,
+        role: req.body.item.overview,
+    }
+
+    console.log("New Employer Added");
+    var employers = new employerData(employer);
+    employers.save();
+});
+
 // get students
 app.get('/students',function(req,res){
     res.header("Acces-Control-Allow-Origin","*");
@@ -115,6 +132,35 @@ app.get('/students',function(req,res){
             res.send(students);
         });
 });  
+
+// add student
+app.post('/addstudent', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+    console.log(req.body);
+    var student = {
+        name: req.body.item.name,
+        email: req.body.item.email,
+        password: req.body.item.password,
+        phone: req.body.item.phone,
+        address: req.body.item.address,
+        qualification: req.body.item.qualification,
+        passout: req.body.item.passout,
+        skillset: req.body.item.skillset,
+        employmentStatus: req.body.item.employmentStatus,
+        technologyTraining: req.body.item.technologyTraining,
+        year: req.body.item.year,
+        course: req.body.item.course,
+        fee: req.body.item.fee,
+        id: req.body.item.id,
+        image: req.body.item.image,
+        exitmark: req.body.item.exitmark
+    }
+
+    console.log("New Student Added");
+    var students = new studentData(student);
+    students.save();
+});
 
 // edit student
 app.post('/editstudent', function (req, res) {

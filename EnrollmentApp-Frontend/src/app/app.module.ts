@@ -18,8 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EnrollmentformComponent } from './enrollmentform/enrollmentform.component';
 import { AddcourseComponent } from './admin/addcourse/addcourse.component';
 import { StudentsComponent } from './admin/students/students.component';
-import { EditcourseComponent } from './editcourse/editcourse.component';
 import { CourseComponent } from './admin/course/course.component';
+import { AddstudentComponent } from './admin/addstudent/addstudent.component';
+import { EmployersComponent } from './admin/employers/employers.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +38,9 @@ import { CourseComponent } from './admin/course/course.component';
     EnrollmentformComponent,
     AddcourseComponent,
     StudentsComponent,
-    EditcourseComponent,
-    CourseComponent
+    CourseComponent,
+    AddstudentComponent,
+    EmployersComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CourseModel } from '../courses/course.model';
 import { CourseService } from '../../course.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-courses',
@@ -15,7 +16,7 @@ export class CoursesComponent implements OnInit {
   imageWidth: number = 50;
   imageMargin: number = 2;
 
-  constructor(public courseService: CourseService, public router: Router) { }
+  constructor(public courseService: CourseService, public router: Router, public http: HttpClient) { }
 
   ngOnInit(): void {
     this.courseService.getCourses().subscribe((data) => {
@@ -27,23 +28,10 @@ export class CoursesComponent implements OnInit {
   viewCourse(course: any){
     localStorage.setItem('viewcourse', course._id)
     this.router.navigate(['course'])
-  }
+   }
   
-  editCourse(course: any){
-    localStorage.setItem('editcourse', course.code)
-    this.router.navigate(['editcourse'])
-  }
+  editCourse(course: any){ }
 
-  deleteCourse(course: any){
-    if(confirm("Are you sure you want to delete this course?")) {
-      
-      this.courseService.deleteCourse(this.course)
-      .subscribe((data) => {
-        this.ngOnInit()
-      })
-    }else{
-      this.ngOnInit()
-    }
-  }
+  deleteCourse(course: any){ }
 
 }
