@@ -29,7 +29,7 @@ const routes: Routes = [
   {path:"employerregistration", component: EmployerformComponent},
   {path:"studentregistration", component: StudentformComponent},
   {path: "userlogin", component: UserloginComponent},
-  {path: "enrollment", component: EnrollmentformComponent}
+  {path: "enroll", component: EnrollmentformComponent}
 ];
 
 @NgModule({

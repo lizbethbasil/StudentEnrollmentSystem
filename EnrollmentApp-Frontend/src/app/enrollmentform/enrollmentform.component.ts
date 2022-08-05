@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { StudentModel } from '../admin/students/student.model';
+import { EnrollModel } from '../admin/students/enrollment.model';
 import { StudentService } from '../student.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { StudentService } from '../student.service';
   templateUrl: './enrollmentform.component.html',
   styleUrls: ['./enrollmentform.component.css']
 })
+
 export class EnrollmentformComponent implements OnInit {
   enrollmentForm = new FormGroup({
     name: new FormControl(''),
@@ -29,16 +30,17 @@ export class EnrollmentformComponent implements OnInit {
   //   console.log(value);
   // }
 
-  addstudent = new StudentModel("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+  enrollstudent = new EnrollModel("", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
-  constructor(public studentService: StudentService, private router: Router) { }
+  constructor(public studentService: StudentService, public router: Router) { }
 
   ngOnInit(): void {
   }
 
-  AddStudent() {
-    this.studentService.addStudent(this.addstudent);
-    alert("New Student Added");
+  Enroll() {
+    this.studentService.enroll(this.enrollstudent);
+    alert("Enrolled!");
+    console.log(this.enrollstudent);
     this.router.navigate(['/students']);
   }
 }

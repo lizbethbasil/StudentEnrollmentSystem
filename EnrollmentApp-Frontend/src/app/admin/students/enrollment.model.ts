@@ -1,8 +1,7 @@
-export class StudentModel {
+export class EnrollModel {
     constructor(
         public name: String,
         public email: String,
-        public password: String,
         public phone: String,
         public address: String,
         public qualification: String,

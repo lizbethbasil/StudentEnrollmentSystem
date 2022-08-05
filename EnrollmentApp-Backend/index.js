@@ -8,6 +8,7 @@ const port = process.env.PORT || 5000;
 const courseData = require("./src/model/courseData");
 const employerData = require("./src/model/employerData");
 const studentData = require("./src/model/studentData");
+const enrollData = require("./src/model/enrollData");
 
 const app = express();
 app.use(cors());
@@ -113,9 +114,9 @@ app.post('/addemployer', (req, res) => {
     console.log(req.body);
     var employer = {
         name: req.body.item.name,
-        email: req.body.item.technology,
-        password: req.body.item.intro,
-        role: req.body.item.overview,
+        email: req.body.item.email,
+        password: req.body.item.password,
+        role: req.body.item.role,
     }
 
     console.log("New Employer Added");
@@ -127,7 +128,7 @@ app.post('/addemployer', (req, res) => {
 app.get('/students',function(req,res){
     res.header("Acces-Control-Allow-Origin","*");
     res.header("Acces-Control-Allow-Methods: GET, POST, PATH, PUT, DELETE, HEAD");
-    studentData.find()
+    enrollData.find()
         .then(function(students){
             res.send(students);
         });
@@ -141,20 +142,7 @@ app.post('/addstudent', (req, res) => {
     var student = {
         name: req.body.item.name,
         email: req.body.item.email,
-        password: req.body.item.password,
-        phone: req.body.item.phone,
-        address: req.body.item.address,
-        qualification: req.body.item.qualification,
-        passout: req.body.item.passout,
-        skillset: req.body.item.skillset,
-        employmentStatus: req.body.item.employmentStatus,
-        technologyTraining: req.body.item.technologyTraining,
-        year: req.body.item.year,
-        course: req.body.item.course,
-        fee: req.body.item.fee,
-        id: req.body.item.id,
-        image: req.body.item.image,
-        exitmark: req.body.item.exitmark
+        password: req.body.item.password
     }
 
     console.log("New Student Added");
@@ -170,7 +158,6 @@ app.post('/editstudent', function (req, res) {
     var student = {
         name: req.body.item.name,
         email: req.body.item.email,
-        password: req.body.item.password,
         phone: req.body.item.phone,
         address: req.body.item.address,
         qualification: req.body.item.qualification,
@@ -190,6 +177,35 @@ app.post('/editstudent', function (req, res) {
     var students = new studentData(student);
     students.save();
 });
+
+// enroll
+app.post('/enroll', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+    console.log(req.body);
+    var enroll = {
+        name: req.body.item.name,
+        email: req.body.item.email,
+        phone: req.body.item.phone,
+        address: req.body.item.address,
+        qualification: req.body.item.qualification,
+        passout: req.body.item.passout,
+        skillset: req.body.item.skillset,
+        employmentStatus: req.body.item.employmentStatus,
+        technologyTraining: req.body.item.technologyTraining,
+        year: req.body.item.year,
+        course: req.body.item.course,
+        fee: req.body.item.fee,
+        id: req.body.item.id,
+        image: req.body.item.image,
+        exitmark: req.body.item.exitmark
+    }
+
+    console.log("Enrolled!");
+    var enrolls = new enrollData(enroll);
+    enrolls.save();
+});
+
 
 app.listen(5000, () => {
     console.log("Listening on Port 5000")

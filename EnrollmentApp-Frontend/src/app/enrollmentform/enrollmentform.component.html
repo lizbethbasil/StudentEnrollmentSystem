@@ -4,35 +4,35 @@
       <!-- <form id="studentEnroll" class="col-lg-4 px-5 border rounded"
         [formGroup]="enrollmentForm" (ngSubmit)="onSubmit(enrollmentForm.value)"> -->
       <form id="studentEnroll" class="col-lg-4 px-5 border rounded"
-        [formGroup]="enrollmentForm" (ngSubmit)="AddStudent()">
+        [formGroup]="enrollmentForm" (ngSubmit)="Enroll()">
         <img src="../../assets/img/enrollmentform-banner.jpg" class="img-fluid img-animate pt-2" alt="">
         
         <p class="h3 text-center fw-bold py-4">Register Here</p>
         <div class="mb-3">
           <input type="text" class="form-control" id="name" placeholder="Name" 
-            formControlName="name" name="name" [(ngModel)]="addstudent.name" required />
+            formControlName="name" name="name" [(ngModel)]="enrollstudent.name" required />
         </div>
         <div class="mb-3">
           <input type="email" class="form-control" id="email" placeholder="Email" 
-            formControlName="email" name="email" [(ngModel)]="addstudent.email" />
+            formControlName="email" name="email" [(ngModel)]="enrollstudent.email" />
           <div class="ps-2 text-secondary" style="font-size: 14px;" *ngIf="enrollmentForm.controls['email'].hasError('pattern')">
             <small>Enter a valid email</small>
           </div>
         </div>
         <div class="mb-3">
           <input type="tel" class="form-control" id="phone" placeholder="Phone" 
-            formControlName="phone" name="phone" [(ngModel)]="addstudent.phone" />
+            formControlName="phone" name="phone" [(ngModel)]="enrollstudent.phone" />
           <div class="ps-2 text-secondary" style="font-size: 14px;" *ngIf="enrollmentForm.controls['phone'].hasError('pattern')">
             <small>Enter a valid phone</small>
           </div>  
         </div>            
         <div class="mb-3">
           <input type="text" class="form-control" id="address" placeholder="Address" 
-            formControlName="address" name="address" [(ngModel)]="addstudent.address" required />
+            formControlName="address" name="address" [(ngModel)]="enrollstudent.address" required />
         </div>
         <div class="mb-3">
           <select class="form-select text-secondary" 
-            formControlName="qualification" name="qualification" [(ngModel)]="addstudent.qualification" required>
+            formControlName="qualification" name="qualification" [(ngModel)]="enrollstudent.qualification" required>
             <option selected disabled value="">Select Highest Qualification</option>
             <option value="BE/ BTech">BE/ BTech</option>
             <option value="BSc/ BCA">BSc/ BCA</option>
@@ -43,15 +43,15 @@
         </div>
         <div class="mb-3">
             <input type="number" min="1950" max="2023" class="form-control" id="passout" placeholder="Passout Year" 
-              formControlName="passout" name="passout" [(ngModel)]="addstudent.passout" required />
+              formControlName="passout" name="passout" [(ngModel)]="enrollstudent.passout" required />
           </div>
           <div class="mb-3">
             <input type="text" class="form-control" id="skillset" placeholder="Skill Set" 
-              formControlName="skillset" name="skillset" [(ngModel)]="addstudent.skillset" />
+              formControlName="skillset" name="skillset" [(ngModel)]="enrollstudent.skillset" />
           </div>
           <div class="mb-3">
             <select class="form-select text-secondary" 
-                formControlName="employmentStatus" name="employmentStatus" [(ngModel)]="addstudent.employmentStatus" required>
+                formControlName="employmentStatus" name="employmentStatus" [(ngModel)]="enrollstudent.employmentStatus" required>
                 <option selected disabled value="">Select Employment Status</option>
                 <option value="Student">Student</option>
                 <option value="Employed">Employed</option>
@@ -60,15 +60,15 @@
         </div>
         <div class="mb-3">
           <input type="text" class="form-control" id="technology" placeholder="Technology Training" 
-            formControlName="technology" name="technology" [(ngModel)]="addstudent.technologyTraining" />
+            formControlName="technology" name="technology" [(ngModel)]="enrollstudent.technologyTraining" />
         </div>
         <div class="mb-3">
           <input type="number" class="form-control" id="year" placeholder="Year" 
-            formControlName="year" name="year" [(ngModel)]="addstudent.year" />
+            formControlName="year" name="year" [(ngModel)]="enrollstudent.year" />
         </div>
         <div class="mb-3">
           <select class="form-select text-secondary"
-            formControlName="course" name="course" [(ngModel)]="addstudent.course" required>
+            formControlName="course" name="course" [(ngModel)]="enrollstudent.course" required>
             <option selected disabled value="">Select Course</option>
             <option value="Data Science & Machine Learning">Data Science & Machine Learning</option>
             <option value="Full Stack Development - MEAN">Full Stack Development - MEAN</option>
@@ -81,11 +81,11 @@
           </select>
         </div>
         <div class="mb-3">
-          <input type="text" class="form-control" id="fee" placeholder="Course Fee" [(ngModel)]="addstudent.fee" required />
+          <input type="text" class="form-control" id="fee" placeholder="Course Fee" [(ngModel)]="enrollstudent.fee" />
         </div>            
         <div class="mb-4">
           <input type="file" class="form-control" id="image" placeholder="Upload Photo" 
-            formControlName='image' name="image" [(ngModel)]="addstudent.exitmark" required/>
+            formControlName='image' name="image" [(ngModel)]="enrollstudent.image" required/>
         </div>
         <div class="mb-4">
           <!-- <button class="btn btn-sm btn-primary px-3" [disabled]='enrollmentForm.invalid'>REGISTER</button> -->

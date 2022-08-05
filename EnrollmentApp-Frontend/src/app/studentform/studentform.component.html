@@ -1,32 +1,33 @@
 <section class="container-fluid">
   <div class="container mt-5 py-5">
     <div class="row justify-content-center">
-      <form id="studentForm" class="col-lg-4 px-5 border rounded"
-        [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm.value)">
+      <!-- <form id="studentForm" class="col-lg-4 px-5 border rounded"
+        [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm.value)"> -->
+        <form id="studentForm" class="col-lg-4 px-5 border rounded"
+        [formGroup]="signupForm" (ngSubmit)="AddStudent()">  
         <img src="../../assets/img/studentform-banner.png" class="img-fluid img-animate pt-2" alt="">
-        
           <p class="h3 text-center fw-bold py-4">Register Here</p>
           <div class="mb-3">
               <input type="text" class="form-control" id="name" placeholder="Name" 
-                  formControlName="name" name="name" required />
+                  formControlName="name" name="name" [(ngModel)]="addstudent.name" required />
           </div>
           <div class="mb-3">
             <input type="email" class="form-control" id="email" placeholder="Email" 
-              formControlName="email" name="email" />
+              formControlName="email" name="email" [(ngModel)]="addstudent.email" />
             <div class="ps-2 text-secondary" style="font-size: 14px;" *ngIf="signupForm.controls['email'].hasError('pattern')">
               <small>Enter a valid email</small>
             </div>
           </div>
           <div class="mb-3">
             <input type="password" class="form-control" id="password" placeholder="Password" 
-              formControlName="password" name="password" />
+              formControlName="password" name="password" [(ngModel)]="addstudent.password"  />
               <div id="error" *ngIf="signupForm.controls['password'].hasError('pattern')" 
                 class="ps-2 text-secondary" style="font-size: 14px;">
                 <small>Password should have a minimum length of 8 characters, an uppercase, lowercase and a number</small>
               </div>
           </div>
           <div class="mb-4">
-            <input type="confirmpassword" class="form-control" id="confirmpassword" placeholder="Confirm Password" 
+            <input type="password" class="form-control" id="confirmpassword" placeholder="Confirm Password" 
               formControlName="confirmpassword" name="confirmpassword" />
               <div id="error" *ngIf="" 
                 class="ps-2 text-secondary" style="font-size: 14px;">
@@ -34,7 +35,8 @@
               </div>
           </div>
           <div class="mb-4">
-            <button class="btn btn-sm btn-primary px-3" [disabled]='signupForm.invalid'>REGISTER</button>
+            <!-- <button class="btn btn-sm btn-primary px-3" [disabled]='signupForm.invalid'>REGISTER</button> -->
+            <input class="btn btn-sm btn-primary px-3" type="submit" value="Register" [disabled]='signupForm.invalid'>
           </div>
       </form>
     </div>

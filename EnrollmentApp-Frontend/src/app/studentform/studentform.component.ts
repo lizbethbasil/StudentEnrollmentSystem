@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
+import { StudentModel } from './student.model';
+import { StudentService } from '../student.service';
 
 @Component({
   selector: 'app-studentform',
@@ -14,12 +17,22 @@ export class StudentformComponent implements OnInit {
     confirmpassword: new FormControl('', Validators.compose([Validators.required]))
   })
 
-  onSubmit(value:any){
-    console.log(value);
-  }
-  constructor() { }
+  // onSubmit(value:any){
+  //   console.log(value);
+  // }
+  
+  addstudent = new StudentModel("", "", "");
+
+  constructor(public studentService: StudentService, public router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  AddStudent() {
+    this.studentService.addStudent(this.addstudent);
+    alert("Sign Up Successful");
+    // this.router.navigate(['/students']);
+    this.router.navigate(['/']);
   }
 
 }

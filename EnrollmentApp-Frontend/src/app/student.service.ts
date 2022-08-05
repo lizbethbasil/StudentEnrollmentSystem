@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class StudentService {
 
   constructor(public http: HttpClient) { }
-  getStudents() {
+  getEnrolledStudents() {
     return this.http.get('http://localhost:5000/students');
   }
 
@@ -17,4 +17,12 @@ export class StudentService {
         console.log(data) 
       });
   }
+
+  enroll(item: any) {
+    return this.http.post('http://localhost:5000/enroll', { item })
+      .subscribe(data => { 
+        console.log(data) 
+      });
+  }
+
 }

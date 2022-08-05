@@ -19,7 +19,6 @@ import { EnrollmentformComponent } from './enrollmentform/enrollmentform.compone
 import { AddcourseComponent } from './admin/addcourse/addcourse.component';
 import { StudentsComponent } from './admin/students/students.component';
 import { CourseComponent } from './admin/course/course.component';
-import { AddstudentComponent } from './admin/addstudent/addstudent.component';
 import { EmployersComponent } from './admin/employers/employers.component';
 
 @NgModule({
@@ -39,7 +38,6 @@ import { EmployersComponent } from './admin/employers/employers.component';
     AddcourseComponent,
     StudentsComponent,
     CourseComponent,
-    AddstudentComponent,
     EmployersComponent
   ],
   imports: [

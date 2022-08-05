@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from 'src/app/student.service';
-import { StudentModel } from './student.model';
+import { EnrollModel } from './enrollment.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,14 +12,14 @@ export class StudentsComponent implements OnInit {
 
   title: String = "Student Profiles";
   
-  student: StudentModel[] | any;
+  student: EnrollModel[] | any;
   imageWidth: number = 50;
   imageMargin: number = 2;
 
   constructor(public studentService: StudentService, public router: Router) { }
 
   ngOnInit(): void {
-    this.studentService.getStudents().subscribe((data) => {
+    this.studentService.getEnrolledStudents().subscribe((data) => {
       this.student = JSON.parse(JSON.stringify(data));
       console.log(this.student);
     })

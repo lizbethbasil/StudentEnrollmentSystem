@@ -32,6 +32,16 @@ export class CoursesComponent implements OnInit {
   
   editCourse(course: any){ }
 
-  deleteCourse(course: any){ }
+  delCourse(course: any){
+    if(confirm("Are you sure you want to delete this course???")) {
+      
+      this.courseService.deleteCourse(course.code)
+      .subscribe((data) => {
+        this.ngOnInit()
+      })
+    }else{
+      this.ngOnInit()
+    }
+   }
 
 }
