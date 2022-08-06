@@ -90,7 +90,7 @@ app.put('/editcourse', (req, res) => {
 // delete course
 app.delete('deletecourse/:id', (req,res) => {  
     id = req.params.id;
-    courseData.findByIdAndDelete({"_id": id})
+    courseData.findByIdAndDelete({"code": id})
     .then(()=>{
         console.log('success');
         res.send();

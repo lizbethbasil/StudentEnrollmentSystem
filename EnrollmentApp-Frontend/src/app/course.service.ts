@@ -25,7 +25,7 @@ export class CourseService {
   }
 
   deleteCourse(id: any){
-    return this.http.delete("http://localhost:5000/deletecourse/" + id)
+    return this.http.delete("http://localhost:5000/courses/")
   }
 
   editCourse(course: any){
