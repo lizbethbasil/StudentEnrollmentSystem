@@ -7,8 +7,6 @@ const port = process.env.PORT || 5000;
 
 const userData = require("./src/model/userData");
 const courseData = require("./src/model/courseData");
-const employerData = require("./src/model/employerData");
-const studentData = require("./src/model/studentData");
 const enrollData = require("./src/model/enrollData");
 
 const app = express();
@@ -53,9 +51,10 @@ app.get('/courses', (req, res) => {
 app.get('/employers',function(req,res){
     res.header("Acces-Control-Allow-Origin","*");
     res.header("Acces-Control-Allow-Methods: GET, POST, PATH, PUT, DELETE, HEAD");
-    employerData.find()
+    userData.find({'role': 'Employer'})
         .then(function(employers){
             res.send(employers);
+            console.log(employers);
         });
 });  
 

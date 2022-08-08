@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from 'src/app/student.service';
-import { EnrollModel } from './enrollment.model';
+import { EnrollModel } from '../approvals/enrollment.model';
 import { Router } from '@angular/router';
 
 @Component({

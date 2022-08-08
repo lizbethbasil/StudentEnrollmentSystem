@@ -81,9 +81,16 @@
           </select>
         </div>
         <div class="mb-3">
-          <input type="text" class="form-control" id="fee" placeholder="Course Fee" [(ngModel)]="enrollstudent.fee" *ngIf="enrollstudent.course == ''" />
-          <input type="text" class="form-control" id="fee" placeholder="Course Fee" [(ngModel)]="enrollstudent.fee" *ngIf="enrollstudent.course == 'Data Science & Machine Learning'" value="24000" />
-          <input type="text" class="form-control" id="fee" placeholder="Course Fee" [(ngModel)]="enrollstudent.fee" *ngIf="enrollstudent.course == 'Full Stack Development - MEAN'" value="26000" />
+          <input type="number" class="form-control" id="fee" placeholder="Course Fee" formControlName="fee" name="fee" [(ngModel)]="enrollstudent.fee" required />
+          <!-- <input type="number" class="form-control" id="fee" placeholder="Course Fee" formControlName="fee" name="fee"  [(ngModel)]="enrollstudent.fee" *ngIf="enrollstudent.course == ''" required [disabled]="true" />
+          <input type="number" class="form-control" id="fee" [(ngModel)]="enrollstudent.fee" *ngIf="enrollstudent.course == 'Data Science & Machine Learning'" value="30000" required [disabled]="true" />
+          <input type="number" class="form-control" id="fee" [(ngModel)]="enrollstudent.fee" *ngIf="enrollstudent.course == 'Full Stack Development - MEAN'" value="25000" required [disabled]="true" />
+          <input type="number" class="form-control" id="fee" [(ngModel)]="enrollstudent.fee" *ngIf="enrollstudent.course == 'Software Testing'" value="20000" required [disabled]="true" />
+          <input type="number" class="form-control" id="fee" [(ngModel)]="enrollstudent.fee" *ngIf="enrollstudent.course == 'Data Science & Analytics'" value="30000" required [disabled]="true" />
+          <input type="number" class="form-control" id="fee" [(ngModel)]="enrollstudent.fee" *ngIf="enrollstudent.course == 'Robotic Process Automation'" value="28000" required [disabled]="true" />
+          <input type="number" class="form-control" id="fee" [(ngModel)]="enrollstudent.fee" *ngIf="enrollstudent.course == 'Cyber Security Analyst'" value="24000" required [disabled]="true" />
+          <input type="number" class="form-control" id="fee" [(ngModel)]="enrollstudent.fee" *ngIf="enrollstudent.course == 'Digital Marketing'" value="22000" required [disabled]="true" />
+          <input type="number" class="form-control" id="fee" [(ngModel)]="enrollstudent.fee" *ngIf="enrollstudent.course == 'Full Stack Development - MERN'" value="25000" required [disabled]="true" /> -->
         </div>            
         <div class="mb-4">
           <input type="file" class="form-control" id="image" placeholder="Upload Photo" 

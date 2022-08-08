@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { EnrollModel } from '../../admin/students/enrollment.model';
+import { EnrollModel } from '../../admin/approvals/enrollment.model';
 import { StudentService } from '../../student.service';
 
 @Component({
@@ -23,6 +23,7 @@ export class EnrollmentformComponent implements OnInit {
     technology: new FormControl(''),
     year: new FormControl(''),
     course: new FormControl(''),
+    fee: new FormControl(''),
     image:  new FormControl('')
   })
   
