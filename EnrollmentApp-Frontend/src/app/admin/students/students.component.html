@@ -1,0 +1,25 @@
+<section id="students" class="container-fluid">
+    <div id="img-holder" class="row"></div>
+    <div id="title" class="container py-5">
+        <p class="h3 fw-bold text-center pb-4">{{title}}</p>
+        <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 g-4 pb-5">
+          <div class="col" *ngFor="let s of student">
+            <div class="card h-100 shadow rounded">
+              <img src="{{s.image}}" class="card-img-top" alt="">
+              <div class="card-body">
+                  <span class="badge text-bg-secondary mb-2">{{s.id}}</span>
+                  <h5 class="card-title">{{s.name}}</h5>
+                  <small class="card-text">{{s.email}}</small>
+                  <!-- <small class="card-text">Course Fee: &#8377;<span>{{c.fee}}</span></small> -->
+                  <br>
+                  <div class="mt-4">
+                    <!-- <a routerLink="/viewstudent" class="btn btn-sm btn-outline-primary text-center me-2" (click)="viewStudent(student)">View</a> -->
+                    <a routerLink="/editstudent" class="btn btn-sm btn-primary text-center me-2" (click)="editStudent(student)">Edit</a>
+                    <a routerLink="/deletestudent" class="btn btn-sm btn-danger text-center" (click)="deleteStudent(student)">Delete</a>    
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>        
+  </section>
