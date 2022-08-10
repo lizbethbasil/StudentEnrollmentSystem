@@ -14,6 +14,7 @@ export class EnrollModel {
         public fee: String,
         public id: String,
         public image: String,
-        public exitmark: String
+        public exitmark: String,
+        public status: String
     ) {}
 }

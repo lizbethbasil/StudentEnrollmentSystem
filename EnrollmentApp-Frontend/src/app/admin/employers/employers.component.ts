@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployerService } from 'src/app/employer.service';
+import { EmployerService } from '../../services/employer.service';
 import { EmployerModel } from './employer.model';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,7 @@ export class EmployersComponent implements OnInit {
   
   employer: EmployerModel[] | any;
 
-  constructor(public employerService: EmployerService, public router: Router) { }
+  constructor(private employerService: EmployerService, private router: Router) { }
 
   ngOnInit(): void {
     this.employerService.getEmployers().subscribe((data) => {
@@ -23,10 +23,21 @@ export class EmployersComponent implements OnInit {
     })
   }
 
-  viewEmployer(employer: any){ }
+  viewEmployer(id: any){ }
   
-  editEmployer(employer: any){ }
+  editEmployer(id: any){ 
+    this.router.navigate([`/edit/${id}`]);
+  }
 
-  deleteEmployer(employer: any){ }
+  deleteEmployer(id: any){ 
+    if(confirm('Are you sure want to delete?')){
+      this.employerService.deleteEmployer(id).subscribe((res:any)=>{
+        if(res.success===1){
+          this.ngOnInit();
+        }
+      })
+  
+    }
+  }
 
 }

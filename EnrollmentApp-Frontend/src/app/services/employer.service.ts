@@ -12,4 +12,12 @@ export class EmployerService {
     return this.http.get('http://localhost:5000/employers');
   }
 
+  editEmployer(id: any, data: any) {
+    return this.http.put<any>(`http://localhost:5000/employers/${id}`, data);
+  }
+
+  deleteEmployer(id: any) {
+    return this.http.delete(`http://localhost:5000/employers/${id}`);
+  }
+
 }

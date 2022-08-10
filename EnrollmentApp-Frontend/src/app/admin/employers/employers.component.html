@@ -6,14 +6,15 @@
           <div class="col" *ngFor="let e of employer">
             <div class="card h-100 shadow rounded">
               <div class="card-body">
-                  <span class="badge text-bg-secondary mb-2">{{e.name}}</span>
-                  <h5 class="card-title">{{e.email}}</h5>
-                  <small class="card-text">{{e.role}}</small>
+                  <h6>{{e.name}}</h6>
+                  <!-- <small>{{e.email}}</small>
+                  <br> -->
+                  <span class="badge text-bg-secondary mb-2">{{e.role}}</span>
                   <br>
-                  <div class="mt-4">
-                    <a routerLink="/viewemployer" class="btn btn-sm btn-outline-primary text-center me-2" (click)="viewEmployer(employer)">View</a>
-                    <a routerLink="/editemployer" class="btn btn-sm btn-primary text-center me-2" (click)="editEmployer(employer)">Edit</a>
-                    <a routerLink="/deleteemployer" class="btn btn-sm btn-danger text-center" (click)="deleteEmployer(employer)">Delete</a>    
+                  <div class="mt-2">
+                    <a routerLink="/viewemployer" class="btn btn-sm btn-outline-primary text-center me-2" (click)="viewEmployer(e._id)">View</a>
+                    <a routerLink="/editemployer" class="btn btn-sm btn-primary text-center me-2" (click)="editEmployer(e._id)">Edit</a>
+                    <a routerLink="/deleteemployer" class="btn btn-sm btn-danger text-center" (click)="deleteEmployer(e._id)">Delete</a>    
                   </div>
               </div>
             </div>

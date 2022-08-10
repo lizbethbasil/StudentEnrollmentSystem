@@ -47,6 +47,45 @@ app.get('/courses', (req, res) => {
         });
 });  
 
+// enroll
+app.post('/enroll', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+    console.log(req.body);
+    var enroll = {
+        name: req.body.item.name,
+        email: req.body.item.email,
+        phone: req.body.item.phone,
+        address: req.body.item.address,
+        qualification: req.body.item.qualification,
+        passout: req.body.item.passout,
+        skillset: req.body.item.skillset,
+        employmentStatus: req.body.item.employmentStatus,
+        technologyTraining: req.body.item.technologyTraining,
+        year: req.body.item.year,
+        course: req.body.item.course,
+        fee: req.body.item.fee,
+        id: req.body.item.id,
+        image: req.body.item.image,
+        exitmark: req.body.item.exitmark,
+        status: req.body.item.status
+    }
+
+    console.log("Enrolled!");
+    var enrolls = new enrollData(enroll);
+    enrolls.save();
+});
+
+// get course enrollment requests
+app.get('/approvals',function(req,res){
+    res.header("Acces-Control-Allow-Origin","*");
+    res.header("Acces-Control-Allow-Methods: GET, POST, PATH, PUT, DELETE, HEAD");
+    enrollData.find()
+        .then(function(students){
+            res.send(students);
+        });
+}); 
+
 // get employers
 app.get('/employers',function(req,res){
     res.header("Acces-Control-Allow-Origin","*");
@@ -58,21 +97,29 @@ app.get('/employers',function(req,res){
         });
 });  
 
-// get course enrollment requests
-app.get('/approvals',function(req,res){
-    res.header("Acces-Control-Allow-Origin","*");
-    res.header("Acces-Control-Allow-Methods: GET, POST, PATH, PUT, DELETE, HEAD");
-    enrollData.find()
-        .then(function(students){
-            res.send(students);
-        });
-});  
+// app.put('/:id', (req, res) => {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+
+//     let id = req.params.id;
+    
+//     userModel.findByIdAndUpdate({ _id: id }, {
+//         $set: {
+//             name: req.body.name,
+//             email: req.body.email,
+//             role: req.body.role
+//         }
+//     });
+
+//     console.log("Employer Updated!");    
+// })
+
 
 // get students
 app.get('/students',function(req,res){
     res.header("Acces-Control-Allow-Origin","*");
     res.header("Acces-Control-Allow-Methods: GET, POST, PATH, PUT, DELETE, HEAD");
-    enrollData.find()
+    enrollData.find({'status': 'approved'})
         .then(function(students){
             res.send(students);
         });
@@ -105,34 +152,6 @@ app.get('/students',function(req,res){
 //     var students = new studentData(student);
 //     students.save();
 // });
-
-// enroll
-app.post('/enroll', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-    console.log(req.body);
-    var enroll = {
-        name: req.body.item.name,
-        email: req.body.item.email,
-        phone: req.body.item.phone,
-        address: req.body.item.address,
-        qualification: req.body.item.qualification,
-        passout: req.body.item.passout,
-        skillset: req.body.item.skillset,
-        employmentStatus: req.body.item.employmentStatus,
-        technologyTraining: req.body.item.technologyTraining,
-        year: req.body.item.year,
-        course: req.body.item.course,
-        fee: req.body.item.fee,
-        id: req.body.item.id,
-        image: req.body.item.image,
-        exitmark: req.body.item.exitmark
-    }
-
-    console.log("Enrolled!");
-    var enrolls = new enrollData(enroll);
-    enrolls.save();
-});
 
 
 app.listen(5000, () => {

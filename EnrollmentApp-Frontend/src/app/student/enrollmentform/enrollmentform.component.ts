@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { EnrollModel } from '../../admin/approvals/enrollment.model';
-import { StudentService } from '../../student.service';
+import { StudentService } from '../../services/student.service';
 
 @Component({
   selector: 'app-enrollmentform',
@@ -24,14 +24,15 @@ export class EnrollmentformComponent implements OnInit {
     year: new FormControl(''),
     course: new FormControl(''),
     fee: new FormControl(''),
-    image:  new FormControl('')
+    image:  new FormControl(''),
+    status: new FormControl('')
   })
   
   // onSubmit(value:any){
   //   console.log(value);
   // }
 
-  enrollstudent = new EnrollModel("", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+  enrollstudent = new EnrollModel("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
   constructor(public studentService: StudentService, public router: Router) { }
 
@@ -39,6 +40,7 @@ export class EnrollmentformComponent implements OnInit {
   }
 
   Enroll() {
+    // this.enrollstudent.status = 'pending';
     this.studentService.enroll(this.enrollstudent);
     alert("Enrolled!");
     console.log(this.enrollstudent);

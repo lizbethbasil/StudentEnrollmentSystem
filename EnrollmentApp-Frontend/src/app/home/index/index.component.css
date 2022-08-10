@@ -1,5 +1,5 @@
 #banner .row{
-    background-image: url('../../assets/img/banner-img.jpg');
+    background-image: url('../../../assets/img/banner-img.jpg');
     background-size: cover;
 }
 #banner-text{

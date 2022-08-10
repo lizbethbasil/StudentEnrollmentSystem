@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from 'src/app/student.service';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { StudentService } from '../../services/student.service';
 import { EnrollModel } from './enrollment.model';
 import { Router } from '@angular/router';
 
@@ -12,17 +13,29 @@ export class ApprovalsComponent implements OnInit {
 
   title: String = "Course Enrollments";
   
-  student: EnrollModel[] | any;
+  // approvalForm = new FormGroup({
+  //   id: new FormControl(''),
+  //   status: new FormControl('')
+  // })
   
-  constructor(public studentService: StudentService, public router: Router) { }
+  approvestudent: EnrollModel[] | any;
+  
+  constructor(private studentService: StudentService, private router: Router) { }
 
   ngOnInit(): void {
     this.studentService.getEnrolledStudents().subscribe((data) => {
-      this.student = JSON.parse(JSON.stringify(data));
-      console.log(this.student);
+      this.approvestudent = JSON.parse(JSON.stringify(data));
+      console.log(this.approvestudent);
     })
   }
 
-  approveStudent(student: any){ }
+  approveStudent() {}
+  // Approve(student: any){ 
+  //   this.approvestudent.status = 'approved';
+  //   this.studentService.approve(this.approvestudent);
+  //   alert("Approved!");
+  //   console.log(this.approvestudent);
+  //   this.router.navigate(['/students']);
+  // }
 
 }

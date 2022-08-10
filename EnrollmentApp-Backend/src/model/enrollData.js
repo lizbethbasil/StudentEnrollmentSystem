@@ -19,7 +19,8 @@ const enrollSchema= new schema({
     fee: String,
     id: String,
     image: String,
-    exitmark: String
+    exitmark: String,
+    status: String
 });
 
 // model

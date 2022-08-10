@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-services',
-  templateUrl: './services.component.html',
-  styleUrls: ['./services.component.css']
+  selector: 'app-achievements',
+  templateUrl: './achievements.component.html',
+  styleUrls: ['./achievements.component.css']
 })
-export class ServicesComponent implements OnInit {
+export class AchievementsComponent implements OnInit {
   services = [
     {icon: 'fa-graduation-cap', count: '25k+', title1: 'Participants', title2: 'Trained'},
     {icon: 'fa-users', count: '10k+', title1: 'Faculty', title2: 'Trained'},
