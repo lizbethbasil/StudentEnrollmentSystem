@@ -10,6 +10,7 @@ import { StudentsComponent } from './admin/students/students.component';
 import { MyprofileComponent } from './student/myprofile/myprofile.component';
 import { CoursesComponent } from './student/courses/courses.component';
 import { EnrollmentformComponent } from './student/enrollmentform/enrollmentform.component';
+import { EmployerComponent } from './admin/employer/employer.component';
 
 const routes: Routes = [
   {path:"", component: IndexComponent},
@@ -19,6 +20,8 @@ const routes: Routes = [
   
   {path: "approvals", component: ApprovalsComponent},
   {path:"employers", component: EmployersComponent},
+  {path:"employer", component: EmployerComponent},
+
   {path:"students", component: StudentsComponent},
 
   {path: "myprofile", component: MyprofileComponent},

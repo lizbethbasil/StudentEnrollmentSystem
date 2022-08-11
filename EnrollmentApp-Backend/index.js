@@ -97,23 +97,33 @@ app.get('/employers',function(req,res){
         });
 });  
 
-// app.put('/:id', (req, res) => {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
+// get employer by id
+app.get('/employer/:id', function (req,res) {  
+    res.header("Acces-Control-Allow-Origin","*");
+    res.header("Acces-Control-Allow-Methods: GET, POST, PATH, PUT, DELETE, HEAD"); 
+    let id = req.params.id;
+    console.log(id);
+    userData.findOne({_id: id}, function(err,course) {
+        if(err){
+            console.log(err)
+        }else{
+            console.log(course)
+            res.status(200).send(course)
+        }
+    });
+});
 
-//     let id = req.params.id;
-    
-//     userModel.findByIdAndUpdate({ _id: id }, {
-//         $set: {
-//             name: req.body.name,
-//             email: req.body.email,
-//             role: req.body.role
-//         }
-//     });
-
-//     console.log("Employer Updated!");    
-// })
-
+// delete employer by id
+app.delete('/deleteemployer/:id', (req,res) => { 
+    console.log("Delete Started") 
+    id = req.params.id;
+    console.log(id)
+    userData.findByIdAndDelete({_id: id})
+    .then(()=>{
+        console.log('Success');
+        res.status(200);
+    })
+});
 
 // get students
 app.get('/students',function(req,res){
@@ -124,34 +134,6 @@ app.get('/students',function(req,res){
             res.send(students);
         });
 });  
-
-// edit student
-// app.post('/editstudent', function (req, res) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
-//     console.log(req.body);
-//     var student = {
-//         name: req.body.item.name,
-//         email: req.body.item.email,
-//         phone: req.body.item.phone,
-//         address: req.body.item.address,
-//         qualification: req.body.item.qualification,
-//         passout: req.body.item.passout,
-//         skillset: req.body.item.skillset,
-//         employmentStatus: req.body.item.employmentStatus,
-//         technologyTraining: req.body.item.technologyTraining,
-//         year: req.body.item.year,
-//         course: req.body.item.course,
-//         fee: req.body.item.fee,
-//         id: req.body.item.id,
-//         image: req.body.item.image,
-//         exitmark: req.body.item.exitmark
-//     }
-
-//     console.log("Student Profile Updated");
-//     var students = new studentData(student);
-//     students.save();
-// });
 
 
 app.listen(5000, () => {

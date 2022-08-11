@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { ApprovalsComponent } from './admin/approvals/approvals.component';
@@ -20,6 +22,7 @@ import { EnrollmentformComponent } from './student/enrollmentform/enrollmentform
 import { MyprofileComponent } from './student/myprofile/myprofile.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { UsersignupComponent } from './usersignup/usersignup.component';
+import { EmployerComponent } from './admin/employer/employer.component';
 
 @NgModule({
   declarations: [
@@ -37,14 +40,17 @@ import { UsersignupComponent } from './usersignup/usersignup.component';
     EnrollmentformComponent,
     MyprofileComponent,
     UserloginComponent,
-    UsersignupComponent
+    UsersignupComponent,
+    EmployerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

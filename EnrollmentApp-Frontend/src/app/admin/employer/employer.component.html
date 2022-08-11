@@ -1,0 +1,22 @@
+<section id="employer" class="container-fluid">
+  <div id="img-holder" class="row"></div>
+    <div id="title" class="container py-5 ">
+      <p class="h3 fw-bold text-center pb-4">{{title}}</p>
+      <div class="row justify-content-center">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row" *ngFor="let e of employer">
+            <div class="col-md-4 border-end bg-primary opacity-75 text-center">
+              <i class="fa fa-suitcase text-white display-1 pt-3"></i>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body ps-4">
+                <h5 class="card-title">{{e.name}}</h5>
+                <p class="card-text">{{e.email}}</p>
+                <p class="card-text"><small class="text-muted"><span class="badge text-bg-secondary mb-2">{{e.role}}</span></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>        
+</section>

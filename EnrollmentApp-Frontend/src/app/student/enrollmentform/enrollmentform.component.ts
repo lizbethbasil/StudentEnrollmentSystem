@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { EnrollModel } from '../../admin/approvals/enrollment.model';
 import { StudentService } from '../../services/student.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-enrollmentform',
@@ -11,21 +12,21 @@ import { StudentService } from '../../services/student.service';
 })
 
 export class EnrollmentformComponent implements OnInit {
-  enrollmentForm = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')])),
-    phone: new FormControl('', Validators.compose([Validators.required, Validators.pattern('^(\\+?\d{1,4}[\s-])?(?!0+\s+,?$)\\d{10}\s*,?$')])),
-    address: new FormControl(''),
-    qualification: new FormControl(''),
-    passout: new FormControl(''),
-    skillset: new FormControl(''),
-    employmentStatus: new FormControl(''),
-    technology: new FormControl(''),
-    year: new FormControl(''),
-    course: new FormControl(''),
-    fee: new FormControl(''),
-    image:  new FormControl(''),
-    status: new FormControl('')
+  enrollmentForm = new UntypedFormGroup({
+    name: new UntypedFormControl(''),
+    email: new UntypedFormControl('', Validators.compose([Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')])),
+    phone: new UntypedFormControl('', Validators.compose([Validators.required, Validators.pattern('^(\\+?\d{1,4}[\s-])?(?!0+\s+,?$)\\d{10}\s*,?$')])),
+    address: new UntypedFormControl(''),
+    qualification: new UntypedFormControl(''),
+    passout: new UntypedFormControl(''),
+    skillset: new UntypedFormControl(''),
+    employmentStatus: new UntypedFormControl(''),
+    technology: new UntypedFormControl(''),
+    year: new UntypedFormControl(''),
+    course: new UntypedFormControl(''),
+    fee: new UntypedFormControl(''),
+    image:  new UntypedFormControl(''),
+    status: new UntypedFormControl('')
   })
   
   // onSubmit(value:any){
@@ -34,7 +35,7 @@ export class EnrollmentformComponent implements OnInit {
 
   enrollstudent = new EnrollModel("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
 
-  constructor(public studentService: StudentService, public router: Router) { }
+  constructor(private studentService: StudentService, private notifyService: NotificationService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -42,7 +43,10 @@ export class EnrollmentformComponent implements OnInit {
   Enroll() {
     // this.enrollstudent.status = 'pending';
     this.studentService.enroll(this.enrollstudent);
-    alert("Enrolled!");
+    // alert("Enrolled!");
+    this.notifyService.showInfo(
+      'Course Enrollment Successful', ''
+    );
     console.log(this.enrollstudent);
     this.router.navigate(['/courses']);
   }

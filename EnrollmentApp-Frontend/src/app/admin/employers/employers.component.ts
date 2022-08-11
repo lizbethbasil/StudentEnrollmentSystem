@@ -2,19 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { EmployerService } from '../../services/employer.service';
 import { EmployerModel } from './employer.model';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-employers',
   templateUrl: './employers.component.html',
   styleUrls: ['./employers.component.css']
 })
+
 export class EmployersComponent implements OnInit {
 
   title: String = "Employers";
   
   employer: EmployerModel[] | any;
 
-  constructor(private employerService: EmployerService, private router: Router) { }
+  constructor(private employerService: EmployerService, private notifyService: NotificationService, private router: Router) { }
 
   ngOnInit(): void {
     this.employerService.getEmployers().subscribe((data) => {
@@ -23,21 +25,23 @@ export class EmployersComponent implements OnInit {
     })
   }
 
-  viewEmployer(id: any){ }
-  
-  editEmployer(id: any){ 
-    this.router.navigate([`/edit/${id}`]);
+  viewEmployer(employer_id: any){ 
+    localStorage.setItem('viewemployer', employer_id);
+    this.router.navigate(['employer']);
   }
-
-  deleteEmployer(id: any){ 
-    if(confirm('Are you sure want to delete?')){
-      this.employerService.deleteEmployer(id).subscribe((res:any)=>{
-        if(res.success===1){
-          this.ngOnInit();
-        }
-      })
   
-    }
+  editEmployer(id: any){ }
+
+  deleteEmployer(employer_id: any){
+    this.employerService.deleteEmployer(employer_id)
+    .subscribe((data)=>{
+      console.log(data);
+    });
+
+    window.location.reload();
+    this.notifyService.showInfo(
+      'Deleted Successfully', ''
+    );
   }
 
 }
