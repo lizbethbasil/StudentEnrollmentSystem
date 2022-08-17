@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../../services/student.service';
-import { EnrollModel } from '../../admin/approvals/enrollment.model';
+import { EnrollModel } from '../approvals/enrollment.model';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-myprofile',
-  templateUrl: './myprofile.component.html',
-  styleUrls: ['./myprofile.component.css']
+  selector: 'app-student',
+  templateUrl: './student.component.html',
+  styleUrls: ['./student.component.css']
 })
-export class MyprofileComponent implements OnInit {
 
-  title: String = "My Profile";
+export class StudentComponent implements OnInit {
+
+  title: String = "Student Data";
 
   student: EnrollModel[] | any;
 
@@ -25,4 +26,5 @@ export class MyprofileComponent implements OnInit {
       console.log(data);
     })
   }
+
 }

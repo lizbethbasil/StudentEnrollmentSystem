@@ -1,0 +1,10 @@
+#student{
+    background-image: url('../../../assets/img/profile-banner.jpg'); 
+    background-size: cover;
+    /* background-position: bottom; */
+    /* height: 18rem; */
+}
+
+@media only screen and (min-width: 1000px) {
+    .margin-lg {margin: 0 18rem;}
+  }

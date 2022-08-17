@@ -11,6 +11,9 @@ import { MyprofileComponent } from './student/myprofile/myprofile.component';
 import { CoursesComponent } from './student/courses/courses.component';
 import { EnrollmentformComponent } from './student/enrollmentform/enrollmentform.component';
 import { EmployerComponent } from './admin/employer/employer.component';
+import { EditEmployerComponent } from './admin/edit-employer/edit-employer.component';
+import { StudentComponent } from './admin/student/student.component';
+import { EditStudentComponent } from './admin/edit-student/edit-student.component';
 
 const routes: Routes = [
   {path:"", component: IndexComponent},
@@ -21,8 +24,11 @@ const routes: Routes = [
   {path: "approvals", component: ApprovalsComponent},
   {path:"employers", component: EmployersComponent},
   {path:"employer", component: EmployerComponent},
+  {path:"edit-employer", component: EditEmployerComponent},
 
   {path:"students", component: StudentsComponent},
+  {path:"student", component: StudentComponent},
+  {path:"edit-student", component: EditStudentComponent},
 
   {path: "myprofile", component: MyprofileComponent},
   {path:"courses", component: CoursesComponent},

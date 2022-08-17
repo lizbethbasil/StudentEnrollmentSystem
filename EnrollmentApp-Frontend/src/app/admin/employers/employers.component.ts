@@ -30,7 +30,11 @@ export class EmployersComponent implements OnInit {
     this.router.navigate(['employer']);
   }
   
-  editEmployer(id: any){ }
+  editEmployer(employer_id: any){
+    localStorage.setItem('editEmployer', employer_id);
+    console.log(employer_id);
+    this.router.navigate(['edit-employer']);
+   }
 
   deleteEmployer(employer_id: any){
     this.employerService.deleteEmployer(employer_id)
@@ -40,7 +44,7 @@ export class EmployersComponent implements OnInit {
 
     window.location.reload();
     this.notifyService.showInfo(
-      'Deleted Successfully', ''
+      'Deleted Successfully'
     );
   }
 

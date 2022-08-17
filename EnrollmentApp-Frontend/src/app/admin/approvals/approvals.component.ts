@@ -18,24 +18,31 @@ export class ApprovalsComponent implements OnInit {
   //   status: new FormControl('')
   // })
   
-  approvestudent: EnrollModel[] | any;
+  student: EnrollModel[] | any;
   
   constructor(private studentService: StudentService, private router: Router) { }
 
   ngOnInit(): void {
     this.studentService.getEnrolledStudents().subscribe((data) => {
-      this.approvestudent = JSON.parse(JSON.stringify(data));
-      console.log(this.approvestudent);
+      this.student = JSON.parse(JSON.stringify(data));
+      console.log(this.student);
     })
   }
 
-  approveStudent() {}
-  // Approve(student: any){ 
-  //   this.approvestudent.status = 'approved';
-  //   this.studentService.approve(this.approvestudent);
-  //   alert("Approved!");
-  //   console.log(this.approvestudent);
-  //   this.router.navigate(['/students']);
-  // }
+  approveStudent(email: any){
+    console.log(email);
+   
+    this.studentService.approve(email)
+    .subscribe((data) => {
+      console.log(data)     
+      alert("approved")
+      window.location.reload()
+    })
+  }
+
+  viewStudent(student_id: any){ 
+    localStorage.setItem('viewstudent', student_id);
+    this.router.navigate(['student']);
+  }
 
 }

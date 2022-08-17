@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, UntypedFormControl, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserModel } from './user.model';
 import { UserService } from '../services/user.service';
@@ -13,26 +13,28 @@ import { NotificationService } from '../services/notification.service';
 
 export class UsersignupComponent {
 
-  signupForm!:UntypedFormGroup;
+  title: String = 'Register Here';
 
-  constructor(private formbuilder: UntypedFormBuilder, private userService: UserService, 
+  signUpForm!:FormGroup;
+
+  constructor(private formbuilder: FormBuilder, private userService: UserService, 
     private notifyService: NotificationService, private router: Router){
-    this.signupForm = this.formbuilder.group({
-      name: new UntypedFormControl(''),
-      email: new UntypedFormControl('', Validators.compose([Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')])),
-      password: new UntypedFormControl('', Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$')])),
-      confirmpassword: new UntypedFormControl('', Validators.compose([Validators.required])),
-      role: new UntypedFormControl('', Validators.compose([Validators.required]))
+    this.signUpForm = this.formbuilder.group({
+      name: new FormControl(''),
+      email: new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')])),
+      password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern('^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$')])),
+      confirmpassword: new FormControl('', Validators.compose([Validators.required])),
+      role: new FormControl('', Validators.compose([Validators.required]))
     },
     { validators: this.Mustmatch('password', 'confirmpassword') }
   )}
   
   get f(){
-    return this.signupForm.controls
+    return this.signUpForm.controls
   }
 
   Mustmatch(password: any, confirmpassword: any){
-    return (formGroup: UntypedFormGroup) => {
+    return (formGroup: FormGroup) => {
       const passwordcontrol = formGroup.controls[password];
       const confirmpasswordcontrol = formGroup.controls[confirmpassword];
 
@@ -54,7 +56,7 @@ export class UsersignupComponent {
     this.userService.addUser(this.adduser);
     // alert("User Sign Up Successful");
     this.notifyService.showInfo(
-      'Sign Up Successful', ''
+      'Sign Up Successful'
     );
     this.router.navigate(['/']);
   }

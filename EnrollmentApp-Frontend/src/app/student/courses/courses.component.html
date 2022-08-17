@@ -3,7 +3,7 @@
     <div id="img-holder" class="row"></div>
     <div id="title" class="container py-5">
         <p class="h3 fw-bold text-center pb-4">{{title}}</p>
-        <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 g-4 pb-5">
+        <div class="row row-cols-1 row-cols-lg-4 row-cols-md-2 g-4 pb-5">
           <div class="col" *ngFor="let c of courses">
             <div class="card h-100 shadow rounded">
               <img src="{{c.image}}" class="card-img-top" alt="">
@@ -13,8 +13,9 @@
                   <small class="card-text">{{c.intro}}</small>
                   <!-- <small class="card-text">Course Fee: &#8377;<span>{{c.fee}}</span></small> -->
                   <br>
-                  <div class="mt-4">
-                    <a routerLink="/enroll" class="btn btn-sm btn-outline-primary text-center me-2" (click)="enroll()">Enroll Now</a>
+                  <div class="mt-4 d-flex justify-content-between">
+                    <a routerLink="/enroll" class="btn btn-sm btn-primary text-center me-2" (click)="enroll()">Enroll Now</a>
+                    <span class="border border-danger rounded-pill text-danger text-center px-3">&#8377; {{c.fee}}</span>
                   </div>
               </div>
             </div>

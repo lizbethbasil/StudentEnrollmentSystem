@@ -6,7 +6,7 @@
         <img src="../../assets/img/userlogin-banner.png" class="img-fluid img-animate pt-2" alt="">
         
         <div class="px-5 pb-5 bg-primary bg-gradient bg-opacity-75">
-          <p class="h3 text-center fw-bold py-4">Welcome User</p>
+          <p class="h3 text-center fw-bold py-4">{{ title }}</p>
         <div class="mb-3">
           <input type="email" class="form-control" id="email" placeholder="Email" 
             onkeyup="this.setAttribute('value', this.value);" [(ngModel)]="user.email" value="" name="email" required />

@@ -8,8 +8,8 @@ export class NotificationService {
 
   constructor(private toastr: ToastrService) { }
 
-  showInfo(message: string, title: string) {
-    this.toastr.info(message, title);
+  showInfo(message: string) {
+    this.toastr.info(message);
   }
  
 }

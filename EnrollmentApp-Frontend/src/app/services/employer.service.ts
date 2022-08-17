@@ -16,8 +16,8 @@ export class EmployerService {
     return this.http.get("http://localhost:5000/employer/" + id); 
   }
 
-  editEmployer(id: any, data: any) {
-    return this.http.put<any>(`http://localhost:5000/employers/${id}`, data);
+  editEmployer(data: any) {
+    return this.http.put(`http://localhost:5000/edit-employer`, {"employer": data});
   }
 
   deleteEmployer(id: any) {

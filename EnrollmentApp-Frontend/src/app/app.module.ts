@@ -23,6 +23,9 @@ import { MyprofileComponent } from './student/myprofile/myprofile.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { UsersignupComponent } from './usersignup/usersignup.component';
 import { EmployerComponent } from './admin/employer/employer.component';
+import { EditEmployerComponent } from './admin/edit-employer/edit-employer.component';
+import { StudentComponent } from './admin/student/student.component';
+import { EditStudentComponent } from './admin/edit-student/edit-student.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { EmployerComponent } from './admin/employer/employer.component';
     MyprofileComponent,
     UserloginComponent,
     UsersignupComponent,
-    EmployerComponent
+    EmployerComponent,
+    EditEmployerComponent,
+    StudentComponent,
+    EditStudentComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,81 @@
-<p>myprofile works!</p>
+<section id="student" class="container-fluid">
+    <div id="img-holder" class="row"></div>
+    <div id="title" class="container py-5 mt-5">
+        <!-- <p class="h3 fw-bold text-center pb-4">{{title}}</p> -->
+
+        <div class="table-responsive margin-lg mt-5">
+            <table class="table table-bordered table-light" *ngFor="let s of student">
+                <thead class="text-center">
+                    <tr>
+                        <th colspan="2">
+                            <i class="fa fa-user text-primary text-center display-1 pt-4"></i><br>
+                            <h5 class="text-uppercase pb-2">{{s.name}}</h5>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Student ID</th><td>{{s.id}}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th><td>{{s.email}}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th><td>{{s.phone}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2" class="bg-primary">
+                            <span class="row m-0">
+                                <span class="col-10 text-white">General Information</span>
+                                <span class="col-2"><button class="btn btn-sm btn-outline-light px-4">Update</button></span>
+                            </span>
+                        </th>
+                    </tr>    
+                    <tr>
+                        <th>Address</th><td>{{s.address}}</td>
+                    </tr>
+                    <tr>
+                        <th>Qualification</th><td>{{s.qualification}}</td>
+                    </tr>
+                    <tr>
+                        <th>Pass Out</th><td>{{s.passout}}</td>
+                    </tr>
+                    <tr>
+                        <th>Skill Set</th><td>{{s.skillset}}</td>
+                    </tr>
+                    <tr>
+                        <th>Employment Status</th><td>{{s.employmentStatus}}</td>
+                    </tr>
+                    <tr>
+                        <th>Technology Training</th><td>{{s.technologyTraining}}</td>
+                    </tr>
+                    <tr>
+                        <th>Year</th><td>{{s.year}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="2" class="bg-primary">
+                            <span class="text-white">Course Details</span>
+                        </th>
+                    </tr>    
+                    <tr>
+                        <th>Course</th><td>{{s.course}}</td>
+                    </tr>
+                    <tr>
+                        <th>Exit Exam Mark</th><td>{{s.exitmark}}</td>
+                    </tr>                       
+                </tbody>
+            </table>
+        </div>
+
+        
+
+       
+             
+    </div>        
+</section>

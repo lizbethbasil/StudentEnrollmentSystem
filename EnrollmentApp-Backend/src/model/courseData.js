@@ -9,9 +9,10 @@ const courseSchema= new schema({
     name: String,
     technology: String,
     intro: String,
-    image: String
+    image: String,
+    fee: Number
 });
 
 // model
-var coursedata = mongoose.model('coursedatas',courseSchema);
+var coursedata = mongoose.model('coursedatas', courseSchema);
 module.exports = coursedata;

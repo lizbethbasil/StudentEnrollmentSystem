@@ -9,12 +9,12 @@ export class CourseService {
 
   constructor(public http: HttpClient) { }
   
-  addCourse(item: any) {
-    return this.http.post('http://localhost:5000/addcourse', { item })
-      .subscribe(data => { 
-        console.log(data) 
-      });
-  }
+  // addCourse(item: any) {
+  //   return this.http.post('http://localhost:5000/addcourse', { item })
+  //     .subscribe(data => { 
+  //       console.log(data) 
+  //     });
+  // }
 
   getCourses() {
     return this.http.get('http://localhost:5000/courses');

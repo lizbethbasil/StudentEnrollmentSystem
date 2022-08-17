@@ -3,6 +3,7 @@ export class CourseModel {
         public name: String,
         public technology: String,
         public intro: String,
-        public image: String
+        public image: String,
+        public fee: Number
     ) {}
 }
