@@ -22,8 +22,9 @@ export class CoursesComponent implements OnInit {
     this.courseService.getCourses().subscribe((data) => {
       this.courses = JSON.parse(JSON.stringify(data));
       console.log(this.courses);
-    })
-  }
+    });
+    
+  }  
 
   enroll(){ }
 

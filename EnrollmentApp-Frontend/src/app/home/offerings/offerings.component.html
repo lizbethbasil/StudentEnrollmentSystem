@@ -1,4 +1,4 @@
-<section class="container py-5">
+<section class="container py-5" *ngIf="studentCheck">
   <p class="display-5 text-center text-capitalize pb-4">current offerings</p>
   <div class="row row-cols-1 row-cols-lg-4 row-cols-md-3 g-4">
     <div class="col wrapper" *ngFor="let course of courses">

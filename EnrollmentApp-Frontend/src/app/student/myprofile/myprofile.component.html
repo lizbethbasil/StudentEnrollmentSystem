@@ -4,24 +4,24 @@
         <p class="h3 fw-bold text-center pb-4">{{title}}</p>
 
         <div class="table-responsive margin-lg mt-2">
-            <table class="table table-bordered" *ngFor="let s of student">
+            <table class="table table-bordered">
                 <thead class="text-center">
                     <tr>
                         <th colspan="2">
                             <i class="fa fa-user text-primary text-center display-1"></i><br>
-                            <h5 class="text-uppercase fw-bold pt-2">{{s.name}}</h5>
+                            <h5 class="text-uppercase fw-bold pt-2">{{student.name}}</h5>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th>Student ID</th><td>{{s.id}}</td>
+                        <th>Student ID</th><td>{{student.id}}</td>
                     </tr>
                     <tr>
-                        <th>Email</th><td>{{s.email}}</td>
+                        <th>Email</th><td>{{student.email}}</td>
                     </tr>
                     <tr>
-                        <th>Phone</th><td>{{s.phone}}</td>
+                        <th>Phone</th><td>{{student.phone}}</td>
                     </tr>
                     <tr>
                         <td colspan="2"></td>
@@ -35,25 +35,25 @@
                         </th>
                     </tr>    
                     <tr>
-                        <th>Address</th><td>{{s.address}}</td>
+                        <th>Address</th><td>{{student.address}}</td>
                     </tr>
                     <tr>
-                        <th>Qualification</th><td>{{s.qualification}}</td>
+                        <th>Qualification</th><td>{{student.qualification}}</td>
                     </tr>
                     <tr>
-                        <th>Pass Out</th><td>{{s.passout}}</td>
+                        <th>Pass Out</th><td>{{student.passout}}</td>
                     </tr>
                     <tr>
-                        <th>Skill Set</th><td>{{s.skillset}}</td>
+                        <th>Skill Set</th><td>{{student.skillset}}</td>
                     </tr>
                     <tr>
-                        <th>Employment Status</th><td>{{s.employmentStatus}}</td>
+                        <th>Employment Status</th><td>{{student.employmentStatus}}</td>
                     </tr>
                     <tr>
-                        <th>Technology Training</th><td>{{s.technologyTraining}}</td>
+                        <th>Technology Training</th><td>{{student.technologyTraining}}</td>
                     </tr>
                     <tr>
-                        <th>Year</th><td>{{s.year}}</td>
+                        <th>Year</th><td>{{student.year}}</td>
                     </tr>
                     <tr>
                         <td colspan="2"></td>
@@ -64,10 +64,10 @@
                         </th>
                     </tr>    
                     <tr>
-                        <th>Course</th><td>{{s.course}}</td>
+                        <th>Course</th><td>{{student.course}}</td>
                     </tr>
                     <tr>
-                        <th>Exit Exam Mark</th><td>{{s.exitmark}}</td>
+                        <th>Exit Exam Mark</th><td>{{student.exitmark}}</td>
                     </tr>                       
                 </tbody>
             </table>

@@ -15,16 +15,38 @@
             <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
           </li>
           <li class="nav-item me-2">
-            <a class="nav-link" routerLink="/courses">Courses</a>
+            <a class="nav-link" routerLink="/courses" *ngIf="studentCheck">Courses</a>
           </li>
         </ul>
         <div>
-            <a routerLink="/approvals" class="btn btn-sm btn-primary me-3 mt-2"><i class="fa fa-server pe-2"></i>For Approval</a>
-            <a routerLink="/employers" class="btn btn-sm btn-primary me-3 mt-2"><i class="fa fa-suitcase pe-2"></i>Employers</a>
-            <a routerLink="/students" class="btn btn-sm btn-primary me-3 mt-2"><i class="fa fa-users pe-2"></i>Students</a>
-            <a routerLink="/myprofile" class="btn btn-sm btn-primary me-3 mt-2"><i class="fa fa-user pe-2"></i>My Profile</a>
-            <a routerLink="/usersignup" class="btn btn-sm btn-outline-primary me-3 mt-2">User Sign Up</a>
-            <a routerLink="/userlogin" class="btn btn-sm btn-primary mt-2">User Login</a>
+          <a routerLink="/approvals" class="btn btn-sm btn-primary me-3 mt-2" *ngIf="adminCheck">
+            <i class="fa fa-server pe-2"></i>
+            For Approval
+          </a>
+          <a routerLink="/employers" class="btn btn-sm btn-primary me-3 mt-2" *ngIf="adminCheck">
+            <i class="fa fa-suitcase pe-2"></i>
+            Employers
+          </a>
+          <a routerLink="/students" class="btn btn-sm btn-primary me-3 mt-2"  *ngIf="adminCheck || employerCheck">
+            <i class="fa fa-users pe-2"></i>
+            Students
+          </a>
+          <a (click)="viewProfile(student)" class="btn btn-sm btn-primary me-3 mt-2" *ngIf="studentCheck">
+            <i class="fa fa-user pe-2" ></i>
+            My Profile
+          </a>
+          <a routerLink="/usersignup" class="btn btn-sm btn-outline-primary me-3 mt-2" *ngIf='!adminCheck &&!studentCheck &&!employerCheck'>
+            <i class="fa fa-user pe-2" ></i>
+            User Sign Up
+          </a>
+          <a routerLink="/userlogin"  class="btn btn-sm btn-outline-primary me-3 mt-2" *ngIf='!adminCheck &&!studentCheck &&!employerCheck'>
+            <i class="fa fa-user pe-2" ></i>
+            User Login
+          </a>
+          <a routerLink="/" class="btn btn-sm btn-primary me-3 mt-2" (click)="logoutUser()" *ngIf="adminCheck || employerCheck || studentCheck">
+              <i class="fa fa-user pe-2" ></i>
+              Log Out
+            </a>
         </div>
       </div>
     </div>

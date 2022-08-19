@@ -1,95 +1,10 @@
-<section class="container-fluid">
+<section class="container-fluid" *ngIf="adminCheck">
     <div id="img-holder" class="row"></div>
     <div class="container mt-5 py-5">
        <div class="row justify-content-center">
           <form class="form col-lg-4 px-5 border rounded"
              #editStudent="ngForm" (ngSubmit)="studentEdit()">
              <p class="h3 text-center fw-bold py-4">{{title}}</p>
-                   
-             <!-- <div class="row form-group mb-3">
-                <div class="col-4">
-                   <label for="name">Name</label>
-                </div>
-                <div class="col-8">
-                   <input type="text" class="form-control" [(ngModel)]="student.name" name="name" #name="ngModel" required />
-                </div>
-             </div>
- 
-             <div class="row form-group mb-3">
-                <div class="col-4">
-                   <label for="email">Email</label>
-                </div>
-                <div class="col-8">
-                   <input type="email" class="form-control" [(ngModel)]="student.email" name="email" #email="ngModel" 
-                      pattern="^[a-z0-9.%+]+@[a-z0-9.-]+\.[a-z]{2,4}" required />
-                   <div class="ps-2 text-secondary" style="font-size: 14px;" [class.d-none]="email.valid || email.untouched">
-                      <small>Enter a valid email</small>
-                   </div>
-                </div>
-             </div>
- 
-             <div class="row form-group mb-3">
-                <div class="col-4">
-                   <label for="role">Phone</label>
-                </div>
-                <div class="col-8">
-                   <input type="text" class="form-control" [(ngModel)]="student.phone" name="phone" #role="ngModel" required />
-                </div>
-             </div>
- 
-             <div class="row form-group mb-3">
-                <div class="col-4">
-                   <label for="role">Address</label>
-                </div>
-                <div class="col-8">
-                   <input type="text" class="form-control" [(ngModel)]="student.address" name="address" #address="ngModel" required />
-                </div>
-             </div>
-
-             <div class="row form-group mb-3">
-                <div class="col-4">
-                   <label for="role">Qualification</label>
-                </div>
-                <div class="col-8">
-                   <input type="text" class="form-control" [(ngModel)]="student.qualification" name="qualification" #qualification="ngModel" required />
-                </div>
-             </div>
- 
-             <div class="row form-group mb-3">
-                <div class="col-4">
-                   <label for="role">Pass Out</label>
-                </div>
-                <div class="col-8">
-                   <input type="text" class="form-control" [(ngModel)]="student.passout" name="passout" #passout="ngModel" required />
-                </div>
-             </div>
-
-             <div class="row form-group mb-3">
-                <div class="col-4">
-                   <label for="role">Skill Set</label>
-                </div>
-                <div class="col-8">
-                   <input type="text" class="form-control" [(ngModel)]="student.skillset" name="skillset" #skillset="ngModel" required />
-                </div>
-             </div>
- 
-             <div class="row form-group mb-3">
-                <div class="col-4">
-                   <label for="role">Training</label>
-                </div>
-                <div class="col-8">
-                   <input type="text" class="form-control" [(ngModel)]="student.technologyTraining" name="technologyTraining" #technologyTraining="ngModel" required />
-                </div>
-             </div>
-
-             <div class="row form-group mb-3">
-                <div class="col-4">
-                   <label for="role">Year</label>
-                </div>
-                <div class="col-8">
-                   <input type="text" class="form-control" [(ngModel)]="student.year" name="year" #year="ngModel" required />
-                </div>
-             </div> -->
  
              <div class="row form-group mb-3">
                 <div class="col-4">

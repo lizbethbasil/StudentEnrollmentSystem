@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // import { EmployerModel } from '../employers/employer.model';
 import { EmployerService } from '../../services/employer.service';
-// import { NotificationService } from '../../services/notification.service';
+import { NotificationService } from '../../services/notification.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-edit-employer',
@@ -16,12 +17,15 @@ export class EditEmployerComponent {
   // employer: EmployerModel[] | any;
 
   name: any = '';
-  // email: any = '';
-  // role: any = '';
-
+    
   employer = (this.name);
 
-  constructor(private employerService: EmployerService, private router:Router){ }
+  adminCheck: boolean= false;
+  employerCheck: boolean= false;
+  studentCheck: boolean = false;
+
+  constructor(private employerService: EmployerService, private notifyService: NotificationService, 
+    private router: Router, private authService: AuthService){ }
 
   ngOnInit(): void {
     let id = localStorage.getItem('editEmployer')
@@ -29,7 +33,19 @@ export class EditEmployerComponent {
     .subscribe((data) => {
       this.employer = JSON.parse(JSON.stringify(data))
       console.log(this.employer);
-    })
+    });
+
+    if(localStorage.getItem('role') == "admin"){
+      this.adminCheck=true;
+      console.log(this.adminCheck)
+    }else if(localStorage.getItem('role') == "Employer"){
+      this.employerCheck=true;
+    }else if(localStorage.getItem('role') == "Student"){
+      this.studentCheck=true;
+    }else{
+      console.log("user logged out")
+    }
+
   }
 
   employerEdit(){
@@ -38,11 +54,14 @@ export class EditEmployerComponent {
     .subscribe(
       response => {
         console.log("success");
-        this.router.navigate(['/employers'])  
+        this.router.navigate(['/employers']); 
       },
       err=>{
         console.log("failed");
-        alert("Update failed. Please try again later.")
+        // alert("Update failed. Please try again later.")
+        this.notifyService.showDanger(
+          'Update failed. Please try again later.'
+        );
       }
     ) 
   }  

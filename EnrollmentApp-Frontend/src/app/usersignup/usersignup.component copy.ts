@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { UserModel } from './user.model';
 import { UserService } from '../services/user.service';
-import { AuthService } from '../services/auth.service';
 import { NotificationService } from '../services/notification.service';
 
 @Component({
@@ -16,10 +15,10 @@ export class UsersignupComponent {
 
   title: String = 'Register Here';
 
-  signUpForm!: FormGroup;
+  signUpForm!:FormGroup;
 
   constructor(private formbuilder: FormBuilder, private userService: UserService, 
-    private notifyService: NotificationService, private router: Router, private auth: AuthService){
+    private notifyService: NotificationService, private router: Router){
     this.signUpForm = this.formbuilder.group({
       name: new FormControl(''),
       email: new FormControl('', Validators.compose([Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')])),
@@ -53,38 +52,12 @@ export class UsersignupComponent {
 
   adduser = new UserModel("", "", "", "");
 
-  AddUser(value: any) {
-    const user = {
-      name: value.name,
-      email: value.email,
-      password: value.password,
-      role: value.role      
-    }
-
-    console.log(value);
-    console.log(user);
-    this.auth.signup(user)
-      .subscribe((data) => {
-        let status = data.status;
-        console.log(status);
-        console.log(data.reason);
-    
-      if(!status){
-        // alert("User already exists");
-        this.notifyService.showDanger(
-          'User already exists'
-        );
-        window.location.reload();
-      }
-      else{
-        console.log("new user added");
-        // alert("new user added");
-        this.notifyService.showInfo(
-          'Sign Up Successful'
-        );
-        this.router.navigate(["userlogin"]);
-      }
-
-    });
+  AddUser() {
+    this.userService.addUser(this.adduser);
+    // alert("User Sign Up Successful");
+    this.notifyService.showInfo(
+      'Sign Up Successful'
+    );
+    this.router.navigate(['/']);
   }
 }

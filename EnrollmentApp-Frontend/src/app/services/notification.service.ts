@@ -11,5 +11,9 @@ export class NotificationService {
   showInfo(message: string) {
     this.toastr.info(message);
   }
+
+  showDanger(message: string) {
+    this.toastr.info(message);
+  }
  
 }

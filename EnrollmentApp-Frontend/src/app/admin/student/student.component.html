@@ -1,4 +1,4 @@
-<section id="student" class="container-fluid">
+<section id="student" class="container-fluid" *ngIf="adminCheck">
     <div id="img-holder" class="row"></div>
     <div id="title" class="container py-5 ">
         <p class="h3 fw-bold text-center pb-4">{{title}}</p>
@@ -109,6 +109,12 @@
                             <div class="col-1">:</div>
                             <div class="col-7">
                                 <p class="card-text">{{s.exitmark}}</p>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4" *ngIf="s.status == 'pending'">
+                            <div class="col-md-2">
+                                <a class="btn btn-sm btn-outline-primary text-center" (click)="approveStudent(s.email)">Approve</a>
                             </div>
                         </div>
 

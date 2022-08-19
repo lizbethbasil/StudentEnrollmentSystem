@@ -9,6 +9,9 @@ export class StudentService {
 
   enroll(item: any) {
     return this.http.post('http://localhost:5000/enroll', { item })
+    .subscribe(data => { 
+      console.log(data) 
+    });
   }
 
   getEnrolledStudents() {
@@ -33,5 +36,9 @@ export class StudentService {
 
   deleteStudent(id: any) {
     return this.http.delete("http://localhost:5000/deletestudent/" + id);
+  }
+
+  viewProfile(id: any){
+    return this.http.get("http://localhost:5000/myprofile/" + id); 
   }
 }
