@@ -3,6 +3,7 @@ import { StudentService } from '../../services/student.service';
 import { EnrollModel } from '../../admin/approvals/enrollment.model';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-myprofile',
@@ -15,16 +16,39 @@ export class MyprofileComponent implements OnInit {
 
   student: EnrollModel[] | any;
 
-  constructor(private studentService: StudentService, private router: Router, public http: HttpClient) { }
+  adminCheck: boolean= false;
+  employerCheck: boolean= false;
+  studentCheck: boolean = false;
+
+  constructor(private studentService: StudentService, private router: Router, 
+    public http: HttpClient, private authService: AuthService, ) { }
 
   ngOnInit(): void {
-    let id = localStorage.getItem('viewstudent');
+    let email = localStorage.getItem('studentEmail');
     
-    this.studentService.viewProfile(id)
+    this.studentService.viewProfile(email)
     .subscribe((data) => {
-      this.student = [data];
+      this.student = data;
       console.log(data);
     });
 
+    if(localStorage.getItem('role') == "admin"){
+      this.adminCheck=true;
+      console.log(this.adminCheck);
+    }else if(localStorage.getItem('role') == "Employer"){
+      this.employerCheck=true;
+    }else if(localStorage.getItem('role') == "Student"){
+      this.studentCheck=true;
+    }else{
+      console.log("logged out");
+    }
+
   }
+
+  editProfile(student_id: any){
+    localStorage.setItem('editProfile', student_id);
+    console.log(student_id);
+    this.router.navigate(['edit-profile']);
+   }
+
 }

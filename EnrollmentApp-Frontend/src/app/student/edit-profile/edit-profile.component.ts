@@ -5,31 +5,33 @@ import { NotificationService } from '../../services/notification.service';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-edit-student',
-  templateUrl: './edit-student.component.html',
-  styleUrls: ['./edit-student.component.css']
+  selector: 'app-edit-profile',
+  templateUrl: './edit-profile.component.html',
+  styleUrls: ['./edit-profile.component.css']
 })
+export class EditProfileComponent implements OnInit {
 
-export class EditStudentComponent implements OnInit {
-
-  title: String = "Edit Student";
+  title: String = "Edit Profile";
   
-  exitmark: any = '';
+  address: any = '';
+  qualification: any = '';
+  passout: any = '';
+  skillset: any = '';
+  technologyTraining: any = '';
+  year: any = '';
 
+  student = (this.address, this.qualification, this.passout, this.skillset, this.technologyTraining, this.year);
 
-  student = (this.exitmark);
-
-  
   adminCheck: boolean= false;
   employerCheck: boolean= false;
   studentCheck: boolean = false;
 
   constructor(private studentService: StudentService, private notifyService: NotificationService, 
-    private router:Router, private authService: AuthService){ }
+    private router:Router, private authService: AuthService) { }
 
   ngOnInit(): void {
-    let id = localStorage.getItem('editStudent')
-    this.studentService.getStudent(id)
+    let id = localStorage.getItem('editStudent');
+    this.studentService.editProfile(id)
     .subscribe((data) => {
       this.student = JSON.parse(JSON.stringify(data))
       console.log(this.student);
@@ -45,16 +47,15 @@ export class EditStudentComponent implements OnInit {
     }else{
       console.log("user logged out")
     }
-
   }
 
-  studentEdit(){
+  profileEdit(){
     console.log(this.student);
-    this.studentService.editStudent(this.student)
+    this.studentService.editProfile(this.student)
     .subscribe(
       response => {
         console.log("success");
-        this.router.navigate(['/students'])  
+        this.router.navigate(['myprofile'])  
       },
       err=>{
         console.log("failed");
@@ -65,4 +66,5 @@ export class EditStudentComponent implements OnInit {
       }
     ) 
   }
+
 }

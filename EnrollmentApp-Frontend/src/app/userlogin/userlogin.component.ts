@@ -26,30 +26,33 @@ export class UserloginComponent implements OnInit {
           localStorage.setItem('token', res.token);
           localStorage.setItem('role', res.role);
 
-          if(res.role == "Employer"){
-            this.route.navigate(['students'])
-              .then(() => {
-                window.location.reload();
+          if(res.status){
+            if(res.role == "Employer"){
+              this.route.navigate(['students'])
+                .then(() => {
+                  window.location.reload();
+                });
+              //window.location.reload()
+            }
+            else if(res.role == "Student"){
+              localStorage.setItem('studentEmail', res.email)
+              this.route.navigate(['courses']) 
+                .then(() => {
+                  window.location.reload();
+                });  
+            }
+            else if(res.role == "admin"){ 
+              this.route.navigate([''])
+                .then(() => {
+                  window.location.reload();
               });
-            //window.location.reload()
-          }
-          else if(res.role == "Student"){
-            this.route.navigate(['courses']) 
-              .then(() => {
-                window.location.reload();
-              });  
-          }
-          else if(res.role == "admin"){ 
-            this.route.navigate([''])
-              .then(() => {
-                window.location.reload();
-            });
+            }
           }else{
-            this.route.navigate([''])
-            .then(() => {
-              window.location.reload();
-            })
-          };
+            alert('invalid credentials');
+          }
+
+          
+
         });
   }
 }

@@ -29,6 +29,7 @@ import { UsersignupComponent } from './usersignup/usersignup.component';
 
 import { AuthService } from './services/auth.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { EditProfileComponent } from './student/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     MyprofileComponent,
     UserloginComponent,
     UsersignupComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
-const nodemailer= require("nodemailer")
+const nodemailer= require("nodemailer");
+const dotenv = require("dotenv");
+dotenv.config({ path: __dirname + '/.env' });
 
 const port = process.env.PORT || 5000;
 // const port = 5000;
@@ -132,10 +134,10 @@ app.post("/userlogin", function(req, res){
                 console.log(error);
             }else{
                 if(!user){
-                    res.status(401).send("Invalid Email");
+                    res.json({status: false, reason: 'Invalid Email'}).status(401);
                     // res.json({status:false});
                 }else if(checkUser.password != user.password){
-                    res.status(401).send("Invalid Password");
+                    res.json({status: false, reason: 'Invalid Password'}).status(401);
                     // res.json({status:false});
                 }else{
                     let payload = { subject: checkUser.email + checkUser.password };
@@ -159,9 +161,10 @@ app.post("/userlogin", function(req, res){
                             status: true,
                             name: user.username,
                             role: "Student",
+                            email: user.email,
                             token,
                         });
-                    }else{
+                    }else if(user.role == "Employer"){
                         let token = jwt.sign(payload, "employerKey");
                         console.log("employer token: ", token);
                         res
@@ -172,6 +175,13 @@ app.post("/userlogin", function(req, res){
                             role: "Employer",
                             token,
                         });
+                    }else{
+                        console.log('Unauthorized Access');
+                        res.status(401)
+                        .send({
+                            status: false,
+                            role: "unauthorized"
+                        })
                     }
                 }
             }
@@ -232,7 +242,7 @@ function sendEmail(data) {
             secure: false, // upgrade later with STARTTLS
             auth: {
                 user: "anusreeprasad2998@gmail.com",
-                pass: "xsmtpsib-2f8318480330fea8e7c560670d7ad94543f71301ee9f3ea0f77eaa19c7db08d6-YzK0BGaJfItyx3L5"
+                pass: process.env.PASS
             }
         }
         
@@ -327,10 +337,10 @@ app.get('/student/:id', verifyAdminToken, function(req, res) {
     console.log(id);
     enrollData.findOne({_id: id}, function(err, course) {
         if(err){
-            console.log(err)
+            console.log(err);
         }else{
-            console.log(course)
-            res.status(200).send(course)
+            console.log(course);
+            res.status(200).send(course);
         }
     });
 });
@@ -396,33 +406,39 @@ app.post('/enroll', verifyStudentToken, (req, res) => {
 });
 
 // get student profile
-app.get('/myprofile/:id', verifyStudentToken, function(req, res) {  
-    let id = req.params.id;
-    console.log(id);
-    enrollData.findOne({_id: id}, function(err, student) {
+app.get('/myprofile/:email', verifyStudentToken, (req, res) => {  
+    let email = req.params.email;
+    console.log(email);
+    enrollData.findOne({email: email}, function(err, course) {
         if(err){
-            console.log(err)
+            console.log(err);
         }else{
-            console.log(student)
-            res.status(200).send(student)
+            console.log(course);
+            res.status(200).send(course);
         }
     });
 });
 
-// get student by id
-app.get('/student/:id', verifyAdminToken, function(req, res) {  
-    let id = req.params.id;
-    console.log(id);
-    enrollData.findOne({_id: id}, function(err, course) {
-        if(err){
-            console.log(err)
-        }else{
-            console.log(course)
-            res.status(200).send(course)
-        }
-    });
+// edit student profile
+app.put('/edit-profile', verifyStudentToken, (req, res) => {
+    console.log(req.body);
+    let id = req.body.student._id;
+    enrollData.findByIdAndUpdate({"_id": id},
+    {
+        $set:{ 
+            address: req.body.student.address,
+            qualification: req.body.student.qualification,
+            passout : req.body.student.passout,
+            skillset: req.body.student.skillset,
+            employmentStatus: req.body.student.employmentStatus,
+            technologyTraining: req.body.student.technologyTraining,
+            year: req.body.student.year
+         }
+    }) .then((data)=>{
+        console.log(data); 
+        res.send(data)
+    })
 });
-
 
 
 app.listen(5000, () => {

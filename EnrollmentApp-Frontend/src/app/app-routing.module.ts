@@ -14,6 +14,7 @@ import { EditStudentComponent } from './admin/edit-student/edit-student.componen
 import { MyprofileComponent } from './student/myprofile/myprofile.component';
 import { CoursesComponent } from './student/courses/courses.component';
 import { EnrollmentformComponent } from './student/enrollmentform/enrollmentform.component';
+import { EditProfileComponent } from './student/edit-profile/edit-profile.component';
 
 const routes: Routes = [
   {path: "", component: IndexComponent},
@@ -30,9 +31,10 @@ const routes: Routes = [
   {path: "student", component: StudentComponent},
   {path: "edit-student", component: EditStudentComponent},
 
-  {path: "myprofile", component: MyprofileComponent},
   {path: "courses", component: CoursesComponent},
-  {path: "enroll", component: EnrollmentformComponent}
+  {path: "enroll", component: EnrollmentformComponent},
+  {path: "myprofile", component: MyprofileComponent},
+  {path: "edit-profile", component: EditProfileComponent}
 ];
 
 @NgModule({

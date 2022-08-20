@@ -38,7 +38,11 @@ export class StudentService {
     return this.http.delete("http://localhost:5000/deletestudent/" + id);
   }
 
-  viewProfile(id: any){
-    return this.http.get("http://localhost:5000/myprofile/" + id); 
+  viewProfile(email: any){
+    return this.http.get("http://localhost:5000/myprofile/" + email); 
+  }
+
+  editProfile(data: any) {
+    return this.http.put(`http://localhost:5000/edit-profile`, {"student": data});
   }
 }

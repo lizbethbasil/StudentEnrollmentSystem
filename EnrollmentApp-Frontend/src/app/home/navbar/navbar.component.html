@@ -31,7 +31,8 @@
             <i class="fa fa-users pe-2"></i>
             Students
           </a>
-          <a (click)="viewProfile(student)" class="btn btn-sm btn-primary me-3 mt-2" *ngIf="studentCheck">
+          <a routerLink="/myprofile" class="btn btn-sm btn-outline-primary text-center me-2 mt-2" 
+          *ngIf="studentCheck" (click)="viewProfile()">
             <i class="fa fa-user pe-2" ></i>
             My Profile
           </a>

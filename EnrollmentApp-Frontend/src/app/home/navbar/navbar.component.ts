@@ -11,28 +11,17 @@ import { EnrollModel } from 'src/app/admin/approvals/enrollment.model';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
+  student: EnrollModel[] | any;
+
   adminCheck: boolean= false;
   employerCheck: boolean= false;
   studentCheck: boolean = false;
 
-  student: EnrollModel[] | any;
-
-  constructor(private router: Router, private http: HttpClient, private studentService: StudentService, private authService: AuthService) { }
+  constructor(private router: Router, private http: HttpClient, 
+    private studentService: StudentService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    let id = localStorage.getItem('id')
-    console.log(id);
-    
-    if(id){
-      this.studentService.viewProfile(id)
-        .subscribe(
-          (response: any)=>{
-            console.log(response);
-            this.student = JSON.parse(JSON.stringify(response));
-          }
-        )
-    }
-
     if(localStorage.getItem('role') == "admin"){
       this.adminCheck=true;
       console.log(this.adminCheck);
@@ -46,14 +35,15 @@ export class NavbarComponent implements OnInit {
     // window.location.reload()  
   }
 
-  viewProfile(student: any){
-    localStorage.setItem('viewstudent', student._id);
+  viewProfile(){
+    // localStorage.setItem('viewstudent', student._id);
     this.router.navigate(['myprofile']);    
   }
 
   logoutUser(){
-    window.localStorage.removeItem('token');
-    window.localStorage.removeItem('role');
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('studentEmail');
     this.router.navigate([''])
       .then(() => {
         window.location.reload();  
