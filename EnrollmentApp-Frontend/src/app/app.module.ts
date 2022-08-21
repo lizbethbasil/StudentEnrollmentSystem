@@ -26,10 +26,11 @@ import { EnrollmentformComponent } from './student/enrollmentform/enrollmentform
 import { MyprofileComponent } from './student/myprofile/myprofile.component';
 import { UserloginComponent } from './userlogin/userlogin.component';
 import { UsersignupComponent } from './usersignup/usersignup.component';
+import { SearchComponent } from './admin/search/search.component';
 
 import { AuthService } from './services/auth.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-import { EditProfileComponent } from './student/edit-profile/edit-profile.component';
+import {searchPipe} from './pipe';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { EditProfileComponent } from './student/edit-profile/edit-profile.compon
     MyprofileComponent,
     UserloginComponent,
     UsersignupComponent,
-    EditProfileComponent,
+    SearchComponent,
+    searchPipe
   ],
   imports: [
     BrowserModule,

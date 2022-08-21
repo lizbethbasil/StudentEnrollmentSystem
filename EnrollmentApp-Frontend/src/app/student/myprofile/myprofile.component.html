@@ -31,10 +31,12 @@
                             <span class="row m-0">
                                 <span class="col-10 text-white">General Information</span>
                                 <span class="col-2">
-                                    <a routerLink="/edit-profile" class="btn btn-sm btn-outline-light px-4" 
+                                    <!-- <a routerLink="/edit-profile" class="btn btn-sm btn-outline-light px-4" 
                                         (click)="editProfile(student._id)">
                                         Edit
-                                    </a>
+                                    </a> - -->
+                                    <a class="btn btn-sm btn-outline-light px-4" 
+                                        data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit</a>
                                     <!-- <a class="btn btn-sm btn-outline-light px-4" (click)="editProfile()">Edit</a> -->
                                 </span>
                             </span>
@@ -81,3 +83,90 @@
              
     </div>        
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="fw-bold modal-title" id="editProfileModalLabel">Edit Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="form" (ngSubmit)="updateStudent()" #editStudent="ngForm">
+                <!-- (ngSubmit)="profileEdit()"> -->
+
+                <div class="row form-group mb-3">
+                    <div class="col-4">
+                        <label for="role">Address</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" class="form-control" [(ngModel)]="studentEdit.address" name="address" #address="ngModel" />
+                    </div>
+                </div>
+
+                 <div class="row form-group mb-3">
+                    <div class="col-4">
+                        <label for="role">Qualification</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" class="form-control" [(ngModel)]="studentEdit.qualification" name="qualification" #qualification="ngModel" />
+                    </div>
+                </div>
+
+             <div class="row form-group mb-3">
+                <div class="col-4">
+                   <label for="role">Pass Out</label>
+                </div>
+                <div class="col-8">
+                   <input type="text" class="form-control" [(ngModel)]="studentEdit.passout" name="passout" #passout="ngModel" />
+                </div>
+             </div>
+
+             <div class="row form-group mb-3">
+                <div class="col-4">
+                   <label for="role">Skill Set</label>
+                </div>
+                <div class="col-8">
+                   <input type="text" class="form-control" [(ngModel)]="studentEdit.skillset" name="skillset" #skillset="ngModel" />
+                </div>
+             </div>
+
+             <div class="row form-group mb-3">
+                <div class="col-4">
+                   <label for="role">Employment Status</label>
+                </div>
+                <div class="col-8">
+                   <input type="text" class="form-control" [(ngModel)]="studentEdit.employmentStatus" name="employmentStatus" #employmentStatus="ngModel" />
+                </div>
+             </div>
+
+             <div class="row form-group mb-3">
+                <div class="col-4">
+                   <label for="role">Technology Training</label>
+                </div>
+                <div class="col-8">
+                   <input type="text" class="form-control" [(ngModel)]="studentEdit.technologyTraining" name="technologyTraining" #technologyTraining="ngModel" />
+                </div>
+             </div>
+             <div class="row form-group mb-3">
+                <div class="col-4">
+                   <label for="role">Year</label>
+                </div>
+                <div class="col-8">
+                   <input type="text" class="form-control" [(ngModel)]="studentEdit.year" name="year" #year="ngModel" />
+                </div>
+             </div> 
+
+             <div class="mb-4">
+               <button type="submit" class="btn btn-primary"  [disabled]='editStudent.invalid'>Update</button>
+            </div>
+         </form>       
+</div>        
+</div>
+<!-- <div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+<button type="button" class="btn btn-primary">Save changes</button>
+</div> -->
+</div>
+</div>

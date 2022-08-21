@@ -8,41 +8,44 @@ export class StudentService {
   constructor(public http: HttpClient) { }
 
   enroll(item: any) {
-    return this.http.post('http://localhost:5000/enroll', { item })
+    return this.http.post('https://projectfsd.herokuapp.com/enroll', { item })
     .subscribe(data => { 
       console.log(data) 
     });
   }
 
   getEnrolledStudents() {
-    return this.http.get('http://localhost:5000/approvals');
+    return this.http.get('https://projectfsd.herokuapp.com/approvals');
   }
 
   approve(email: any) {
-   return this.http.post('http://localhost:5000/approvals', {email: email});
+   return this.http.post('https://projectfsd.herokuapp.com/approvals', {email: email});
  }
 
   getStudents() {
-    return this.http.get('http://localhost:5000/students');
+    return this.http.get('https://projectfsd.herokuapp.com/students');
   }
 
   getStudent(id: any){
-    return this.http.get("http://localhost:5000/student/" + id); 
+    return this.http.get("https://projectfsd.herokuapp.com/student/" + id); 
   }
 
   editStudent(data: any) {
-    return this.http.put(`http://localhost:5000/edit-student`, {"student": data});
+    return this.http.put(`https://projectfsd.herokuapp.com/edit-student`, {"student": data});
   }
 
   deleteStudent(id: any) {
-    return this.http.delete("http://localhost:5000/deletestudent/" + id);
+    return this.http.delete("https://projectfsd.herokuapp.com/deletestudent/" + id);
   }
 
   viewProfile(email: any){
-    return this.http.get("http://localhost:5000/myprofile/" + email); 
+    return this.http.get("https://projectfsd.herokuapp.com/myprofile/" + email); 
   }
 
-  editProfile(data: any) {
-    return this.http.put(`http://localhost:5000/edit-profile`, {"student": data});
+  editProfile(data: any,email: any) {
+    return this.http.put(`https://projectfsd.herokuapp.com/edit-profile`, {student:data,email:email });
+  }
+  getSearchStudents() {
+    return this.http.get('https://projectfsd.herokuapp.com/searchstudents');
   }
 }

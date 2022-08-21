@@ -3,9 +3,10 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const nodemailer= require("nodemailer");
 const dotenv = require("dotenv");
+const path = require("path");
 dotenv.config({ path: __dirname + '/.env' });
 
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 // const port = 5000;
 
 const userData = require("./src/model/userData");
@@ -16,7 +17,7 @@ const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public')); 
+app.use(express.static(path.join(__dirname, "/public")));
 
 // api creation - route definitions
 app.get('/', (req, res) => {
@@ -242,7 +243,8 @@ function sendEmail(data) {
             secure: false, // upgrade later with STARTTLS
             auth: {
                 user: "anusreeprasad2998@gmail.com",
-                pass: process.env.PASS
+                 pass: process.env.PASS
+                 //process.env.PASS
             }
         }
         
@@ -252,7 +254,7 @@ function sendEmail(data) {
             subject: "ICT Academy of Kerala - Course Enrollment Approved",
             text: `Your student id is: ${data.id}` ,
             html: `<p> Hi ${data.name}, </p> 
-                   <p> You have successfully enrolled. and your Student ID is: ${data.id}.</p>
+                   <p> You have successfully enrolled and your Student ID is: ${data.id}.</p>
                    <p>Please use the same ID as a reference for your future communications. </p> 
                    <p> Happy Learning! </p>
                    <p> Regards, </p>
@@ -322,7 +324,7 @@ app.delete('/deleteemployer/:id', verifyAdminToken, (req, res) => {
 });
 
 // get students
-app.get('/students', function(req, res){
+app.get('/students',verifyAdminToken, function(req, res){
     enrollData.find({status: 'approved'})
     // enrollData.find()
         .then(function(students){
@@ -371,7 +373,7 @@ app.delete('/deletestudent/:id', verifyAdminToken, (req, res) => {
 });
 
 // get courses
-app.get('/courses', verifyStudentToken, (req, res) => {
+app.get('/courses', (req, res) => {
     courseData.find()
         .then(function(courses){
             res.send(courses);
@@ -422,8 +424,8 @@ app.get('/myprofile/:email', verifyStudentToken, (req, res) => {
 // edit student profile
 app.put('/edit-profile', verifyStudentToken, (req, res) => {
     console.log(req.body);
-    let id = req.body.student._id;
-    enrollData.findByIdAndUpdate({"_id": id},
+    let email = req.body.email;
+    enrollData.findOneAndUpdate({email: email},
     {
         $set:{ 
             address: req.body.student.address,
@@ -439,8 +441,12 @@ app.put('/edit-profile', verifyStudentToken, (req, res) => {
         res.send(data)
     })
 });
+app.get("/searchstudents",verifyEmployerToken, function (req, res) {
+    enrollData.find( { status: "approved"}).then(function (students) {
+      res.send(students);
+    });
+  });
 
-
-app.listen(5000, () => {
-    console.log("Listening on Port 5000")
+app.listen(PORT, () => {
+    console.log(`Listening on Port ${PORT}`)
 });

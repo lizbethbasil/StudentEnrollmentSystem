@@ -28,7 +28,7 @@ export class UserloginComponent implements OnInit {
 
           if(res.status){
             if(res.role == "Employer"){
-              this.route.navigate(['students'])
+              this.route.navigate(['searchstudent'])
                 .then(() => {
                   window.location.reload();
                 });

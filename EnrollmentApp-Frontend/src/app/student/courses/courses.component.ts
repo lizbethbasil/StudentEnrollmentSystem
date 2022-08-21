@@ -15,7 +15,7 @@ export class CoursesComponent implements OnInit {
   title: String = "Courses We Offer";
   
   courses: CourseModel[] | any;
-
+  
   constructor(public courseService: CourseService, public router: Router, public http: HttpClient) { }
 
   ngOnInit(): void {
@@ -23,6 +23,7 @@ export class CoursesComponent implements OnInit {
       this.courses = JSON.parse(JSON.stringify(data));
       console.log(this.courses);
     });
+    
     
   }  
 

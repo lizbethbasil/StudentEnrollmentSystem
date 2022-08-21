@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  baseUri = "http://localhost:5000/";
+  // baseUri = "http://localhost:5000/";
+  baseUri = "https://projectfsd.herokuapp.com/"
 
   constructor(private http: HttpClient) { }
 

@@ -27,9 +27,13 @@
             <i class="fa fa-suitcase pe-2"></i>
             Employers
           </a>
-          <a routerLink="/students" class="btn btn-sm btn-primary me-3 mt-2"  *ngIf="adminCheck || employerCheck">
+          <a routerLink="/students" class="btn btn-sm btn-primary me-3 mt-2"  *ngIf="adminCheck">
             <i class="fa fa-users pe-2"></i>
             Students
+          </a>
+          <a routerLink="/searchstudent" class="btn btn-sm btn-primary me-3 mt-2"  *ngIf="employerCheck">
+            <i class="fa fa-users pe-2"></i>
+            Search Students
           </a>
           <a routerLink="/myprofile" class="btn btn-sm btn-outline-primary text-center me-2 mt-2" 
           *ngIf="studentCheck" (click)="viewProfile()">
@@ -45,7 +49,7 @@
             User Login
           </a>
           <a routerLink="/" class="btn btn-sm btn-primary me-3 mt-2" (click)="logoutUser()" *ngIf="adminCheck || employerCheck || studentCheck">
-              <i class="fa fa-user pe-2" ></i>
+              <i class="fa fa-sign-out pe-2" ></i>
               Log Out
             </a>
         </div>

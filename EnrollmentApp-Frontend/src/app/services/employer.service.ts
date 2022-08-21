@@ -9,18 +9,18 @@ export class EmployerService {
   constructor(public http: HttpClient) { }
 
   getEmployers() {
-    return this.http.get('http://localhost:5000/employers');
+    return this.http.get('https://projectfsd.herokuapp.com/employers');
   }
 
   getEmployer(id: any){
-    return this.http.get("http://localhost:5000/employer/" + id); 
+    return this.http.get("https://projectfsd.herokuapp.com/employer/" + id); 
   }
 
   editEmployer(data: any) {
-    return this.http.put(`http://localhost:5000/edit-employer`, {"employer": data});
+    return this.http.put(`https://projectfsd.herokuapp.com/edit-employer`, {"employer": data});
   }
 
   deleteEmployer(id: any) {
-    return this.http.delete("http://localhost:5000/deleteemployer/" + id);
+    return this.http.delete("https://projectfsd.herokuapp.com/deleteemployer/" + id);
   }
 }

@@ -10,7 +10,7 @@ export class CourseService {
   constructor(public http: HttpClient) { }
   
   getCourses() {
-    return this.http.get('http://localhost:5000/courses');
+    return this.http.get('https://projectfsd.herokuapp.com/courses');
   }
 
 }

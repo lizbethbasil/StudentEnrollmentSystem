@@ -14,13 +14,15 @@ import { EditStudentComponent } from './admin/edit-student/edit-student.componen
 import { MyprofileComponent } from './student/myprofile/myprofile.component';
 import { CoursesComponent } from './student/courses/courses.component';
 import { EnrollmentformComponent } from './student/enrollmentform/enrollmentform.component';
-import { EditProfileComponent } from './student/edit-profile/edit-profile.component';
+
+import { SearchComponent } from './admin/search/search.component';
 
 const routes: Routes = [
   {path: "", component: IndexComponent},
 
   {path: "usersignup", component: UsersignupComponent},
   {path: "userlogin", component: UserloginComponent},
+  {path: "searchstudent", component: SearchComponent},
   
   {path: "approvals", component: ApprovalsComponent},
   {path: "employers", component: EmployersComponent},
@@ -33,8 +35,7 @@ const routes: Routes = [
 
   {path: "courses", component: CoursesComponent},
   {path: "enroll", component: EnrollmentformComponent},
-  {path: "myprofile", component: MyprofileComponent},
-  {path: "edit-profile", component: EditProfileComponent}
+  {path: "myprofile", component: MyprofileComponent}
 ];
 
 @NgModule({
